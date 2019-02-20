@@ -5,18 +5,20 @@ var makeThumbs = require('./makeThumbs');
 var checkTemplateDefs = require('./checkTemplateDefs');
 var fse = require('fs-extra');
 
-var templates = [ { 
-	'htmml': './template-def/template-versafix-1.htmml', 
-	'html': './dist/template/template-versafix-1.html',
-	'imgDir': './template-def/img/', 
-	'destImgDir': './dist/template/img/', 
-	'modelPrefix': './model/template-versafix-1'
-}, {
-	'htmml': './template-def/template-versafix-1.it.htmml',
-	'html': './dist/template.it/template-versafix-1.it.html',
-	'imgDir': './template-def/img/', 
-	'destImgDir': './dist/template.it/img/', 
-	'modelPrefix': './model/template-versafix-1.it'
+var templates = [
+{
+	'htmml': './template-def/versafix-1-sa-ca/template-versafix-1-sa-ca.htmml',
+	'html': './dist/versafix-1-sa-ca/template-versafix-1-sa-ca.html',
+	'imgDir': './template-def/versafix-1-sa-ca/img/',
+	'destImgDir': './dist/versafix-1-sa-ca/img/',
+	'modelPrefix': './model/versafix-1-sa-ca'
+},
+{
+	'htmml': './template-def/versafix-1-sa-es/template-versafix-1-sa-es.htmml',
+	'html': './dist/versafix-1-sa-es/template-versafix-1-sa-es.html',
+	'imgDir': './template-def/versafix-1-sa-es/img/',
+	'destImgDir': './dist/versafix-1-sa-es/img/',
+	'modelPrefix': './model/versafix-1-sa-es'
 },
 ];
 
