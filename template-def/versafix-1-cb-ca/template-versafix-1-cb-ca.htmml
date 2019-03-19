@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <title style="-ko-bind-text: @titleText">TITLE</title>
+  <style type="text/css">
+    @supports -ko-blockdefs {
+      id { widget: id }
+      size { label: Mida; widget: select; options: 8|9|10|11|12|13|14|15|16|18|20|22|25|28|31; }
+      visible { label: Visible?; widget: boolean }
+      color { label: Color; widget: color }
+      radius {
+        label: Radi de la cantonada;
+        widget: integer;
+        max: 20;
+        help: Atenció - aquesta propietat no és compatible amb tots els clients de correu electrònic (p.ex. Outlook)
+      }
+      face { label: Font; widget: select; options: Arial, Helvetica, sans-serif=Arial|Arial Black, Arial Black, Gadget, sans-serif=Arial Black|Comic Sans MS, Comic Sans MS5, cursive=Comic Sans|Courier New, Courier New, monospace=Courier|Georgia, serif=Georgia|Impact, sans-serif=Impact|Lucida Console, Monaco, monospace=Lucida Console|Lucida Sans Unicode, Lucida Grande, sans-serif=Lucida Sans Unicode|Times New Roman, Times, serif=Times New Roman|Verdana, Geneva, sans-serif=Verdana}
+      decoration { label: Decoració; widget: select; options: none=None|underline=Underline }
+      linksColor { label: Color de l\'enllaç; extend: color }
+      linksDecoration { label: Enllaços subratllats?; extend: decoration }
+      buttonColor { label: Color del botó; extend: color }
+      text { label: Paràgraf; widget: text }
+      url { label: Enllaç; widget: url }
+      src { label: Imatge; widget: src }
+      hrWidth { label: Ample; widget: select; options:10|20|30|40|50|60|70|80|90|100; }
+      hrHeight { label: Alçada de la línia; widget: integer; max: 80; }
+
+      height { label: Alçada; widget: integer }
+      imageHeight { label: Alçada de la imatge; extend: height; }
+      lineHeight { label: Alçada de la línia; widget: select; options: normal=Normal|150%=1.5 Lines|200%=Double; }
+
+      spacerSize { label: Alçada; widget: integer; max: 90; min: 4; }
+      align { label: Alineació; widget: select; options:left=Left|right=Right|center=Center}
+      alt {
+        label: Text alternatiu;
+        widget: text;
+        help: El text alternatiu es mostrarà en els clients de correu electrònic que no descarreguin la imatge automàticament;
+      }
+      titleText {label:Text del títol;category: hidden;}
+      gutterVisible { label: Mostra la canaleta; extend: visible }
+      socialIconType { label: Versió de l\'icona; widget: select; options: bw=Black and White|colors=Colors|rdw=Rounded White; }
+      bigSocialIconType { label: Versió de l\'icona; widget: select; options:black=Black|bw=Black and White|colors=Colors|colorsbrand=Colors Brand|coloured=Coloured|colouredbrand=Coloured Brand|rdbl=Rounded Black|rdbrandcol=Rounded Brand Color|rdcol=Rounded Colors|rdw=Rounded White|white=White; }
+      bigSocialIconSize { label: Mida de la icona; widget: select; options: 32=Petita|48=Gran; }
+
+      preheaderLinkOption {
+        label: Text de precapçalera;
+        widget: select;
+        options: [hidden]=Ocult|visible=Visible;
+      }
+
+      hrStyle { label: Estil del separador;properties:color hrWidth hrHeight; }
+      hrStyle:preview { height: 200%; width: 200%; bottom: 20px; -ko-border-bottom: @[hrHeight]px solid @color; }
+      preheaderVisible { label: Mostra la precapçalera; extend: visible; help: El bloc de precapçalera és el primer element a dalt de la pàgina. Conté l\'enllaç a la versió web i opcionalment un enllaç per cancel·lar la subscripció o un text de precapçalera que es mostrarà com a previsualització en alguns clients de correu electrònic; }
+
+      /* content types */
+      blocks { label: Blocs; properties: blocks[]; }
+      link { label: Enllaç; properties: text url }
+      image { label: Imatge; properties: src url alt }
+      backgroundColor { label: Color de fons; extend: color }
+      buttonLink { label: Botó; extend: link }
+
+      /* texts and links */
+      textStyle { label: Text; properties: face color size align }
+      textStyle:preview { -ko-bind-text: @['AaZz']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; }
+      linkStyle { label: Enllaç; properties: face color size decoration=none }
+      linkStyle:preview { -ko-bind-text: @['Link']; -ko-font-size: @[size]px; -ko-font-family: @face; -ko-color: @color; -ko-text-decoration: @[decoration] }
+      longTextStyle { label: Paràgraf; properties: face color size lineHeight align linksColor   }
+      longTextStyle:preview { -ko-bind-text: @['AaZz']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; }
+      longTextFooterStyle { label: Paràgraf; properties: face color size lineHeight align linksColor   }
+      bigButtonStyle { label: Botó gran; extend: buttonStyle }
+      titleTextStyle { label: Títol; extend: textStyle }
+      /* background */
+      externalBackgroundColor { label: Fons extern; extend: color }
+
+      externalTextStyle { label: Text alternatiu; extend: textStyle }
+      externalTextStyle:preview { -ko-bind-text: @['AaZz']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; }
+
+      bigTitleStyle { label: Títol; properties: face color size align}
+      bigTitleStyle:preview { -ko-bind-text: @['AaZz']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; }
+      /* buttons */
+      buttonStyle color { label: Color del text; extend: color }
+      buttonStyle size { label: Mida del text; extend: size }
+      buttonStyle { label: Botó; properties: face color size align buttonColor radius }
+      buttonStyle:preview { -ko-bind-text: @['Button']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; -ko-background-color: @buttonColor; padding-left: 5px; -ko-border-radius: @[radius]px; }
+
+      /* contents */
+      enviamentPublic { label: Enviament públic; widget: boolean; help: Si es tracta d\'un enviament que no està vinculat a una subscripció cal marcar aquesta opció; }
+
+      preheaderText {label: Text de precapçalera; extend:text; help: Aquest text es mostrarà en alguns clients de correu electrònic com una previsualització dels continguts del correu electrònic;}
+      leftImage { label: Imatge de l\'esquerra; extend: image }
+      leftLongText { label: Text de l\'esquerra; extend: text }
+      leftButtonLink { label: Botó de l\'esquerra; extend: buttonLink }
+      middleImage { label: Imatge central; extend: image }
+      middleLongText { label: Text central; extend: text }
+      middleButtonLink { label: Botó central; extend: buttonLink }
+      rightImage { label: Imatge de la dreta; extend: image }
+      rightLongText { label: Text de la dreta; extend: text }
+      rightButtonLink { label: Botó de la dreta; extend: buttonLink }
+      webversionText{ label: Text de l\'enllaç del web; extend: text;}
+      unsubscribeText{ label: Enllaç de cancel·lació de subscripció; extend: text;}
+
+      titleVisible { label: Mostra el títol; extend: visible; }
+      buttonVisible { label: Mostra el botó; extend: visible; }
+      imageVisible { label: Mostra la imatge; extend: visible; }
+
+      contentTheme { label: Estil principal; }
+      contentTheme:preview { -ko-background-color: @[backgroundColor] }
+      frameTheme { label: Estil del marc; }
+      frameTheme:preview { -ko-background-color: @[backgroundColor] }
+      template preheaderText { label: Precapçalera; }
+
+      template { label: Pàgina; theme: frameTheme; properties: preheaderVisible=true; version: 1.1.18; }
+
+      footerBlock {
+        label: Peu - Enllaços i avís legal;
+        properties: enviamentPublic=true;
+        theme: frameTheme
+      }
+
+      fbVisible { label: Facebook; extend: visible }
+      twVisible { label: Twitter; extend: visible }
+      inVisible { label: LinkedIn; extend: visible }
+      piVisible { label: Pinterest; extend: visible }
+      flVisible { label: Flickr; extend: visible }
+      viVisible { label: Vimeo; extend: visible }
+      webVisible { label: Website; extend: visible }
+      instVisible { label: Instagram; extend: visible }
+      youVisible { label: YouTube; extend: visible }
+      fbUrl { label: Facebook Link; extend: url }
+      twUrl { label: Twitter Link; extend: url}
+      inUrl { label: LinkedIn Link; extend: url}
+      piUrl { label: Pinterest Link; extend: url}
+      flUrl { label: Flickr Link; extend: url}
+      viUrl { label: Vimeo Link; extend: url}
+      webUrl { label: Website Link; extend: url}
+      instUrl { label: Instagram Link; extend: url}
+      youUrl { label: YouTube Link; extend: url}
+
+      socialBlock {
+        label: Peu - Adreça, contacte i xarxes socials;
+        properties: socialIconType=rdw fbVisible=true fbUrl twVisible=true twUrl webVisible=true webUrl inVisible=false inUrl piVisible=false piUrl flVisible=true flUrl viVisible=false viUrl instVisible=false instUrl youVisible=true youUrl longTextStyle longText backgroundColor;
+        variant:socialIconType;
+        theme: frameTheme
+      }
+
+      bigSocialBlock {
+        label: Bloc social;
+        properties: bigSocialIconType=rdbrandcol bigSocialIconSize=48 fbVisible=true fbUrl twVisible=true twUrl webVisible=true webUrl inVisible=false inUrl piVisible=false piUrl flVisible=true flUrl viVisible=false viUrl instVisible=false instUrl youVisible=true youUrl longTextStyle longText;
+        variant: bigSocialIconType;
+        theme: contentTheme
+      }
+
+
+      shareButtonStyle iconColorType { label: Color de la icona Color; widget: select; options: brand=Brand|white=White|black=Black; }
+      shareButtonStyle color { label: Color del text; extend: color }
+      shareButtonStyle size { label: Mida del text; widget: select; options: 10|11|12|13|14|15|16|18|20|22|25; }
+      shareButtonStyle { label: Botó per compartir; properties: face iconColorType=white color size align buttonColor radius }
+      shareButtonStyle:preview { -ko-bind-text: @['Button']; -ko-font-family: @face; -ko-color: @['white']; -ko-font-size: @[size]px; -ko-background-color: @['#CCCCCC']; padding-left: 5px; -ko-border-radius: @[radius]px; }
+
+      shareButtonType { label: Versió del botó;widget: select; options:reverse=Brand buttons|simple=Brand icons|custom=Custom buttons; }
+      shareBlock fbVisible { label: Facebook; }
+      shareBlock twVisible { label: Twitter }
+      shareBlock inVisible { label: LinkedIn }
+      shareBlock piVisible { label: Pinterest }
+      /* shareBlock shareUrlType { label: Share URL; widget: select; options:newsletter=Newsletter|custom=Custom;} */
+      shareBlock customUrl { label: Share Link; }
+      shareBlock {
+        label: Bloc compartir;
+        /* shareUrlType=newsletter */
+        properties: shareButtonType=custom fbVisible=true twVisible=true inVisible=false piVisible=false customUrl;
+        variant: shareButtonType;
+        theme: contentTheme;
+      }
+
+      preheaderBlock { label:Bloc de precapçalera;  theme: frameTheme}
+
+      sideArticleBlock imagePos { label:Posició de la imatge;widget:select; options: left=Left|right=Right; }
+      sideArticleBlock imageWidth { label: Mida de la imatge; widget: select; options: 120=Small|166=Medium|258=Big; }
+      sideArticleBlock { label: Bloc imatge+text; properties: backgroundColor titleVisible=true buttonVisible=true imageWidth=166 imagePos=left titleTextStyle longTextStyle buttonStyle  image  longText buttonLink; variant:imagePos; theme: contentTheme }
+
+      textBlock { label: Bloc text; properties: backgroundColor longTextStyle longText; theme: contentTheme}
+
+      singleArticleBlock imageWidth { label: Mida de la imatge; widget: select; options: 166=Small|258=Medium|350=Big|534=Full }
+      singleArticleBlock { label: Bloc imatge/text; properties: titleVisible=true buttonVisible=true imageVisible=true imageWidth=534 titleTextStyle longTextStyle buttonStyle  image  longText buttonLink; theme: contentTheme}
+
+      fixedImageHeightVisible { label: Fixa l\'alçada de la imatge; extend: visible; }
+      externalBackgroundVisible { label: Fons transparent; extend: visible; }
+
+      doubleArticleBlock { label: Bloc 2 columnes; properties: backgroundColor titleVisible=true buttonVisible=true imageVisible=true fixedImageHeightVisible=true titleTextStyle longTextStyle buttonStyle  leftImage  leftLongText leftButtonLink rightImage  rightLongText rightButtonLink; theme: contentTheme}
+
+      tripleArticleBlock { label: Bloc 3 columnes; properties: backgroundColor titleVisible=true buttonVisible=true imageVisible=true fixedImageHeightVisible=true titleTextStyle longTextStyle buttonStyle  leftImage  leftLongText leftButtonLink middleImage  middleLongText middleButtonLink rightImage  rightLongText rightButtonLink; theme: contentTheme}
+
+      brandLogoBlock longTextStyle { label: Text alternatiu; }
+      brandLogoBlock imageWidth { label: Mida de la imatge; widget: select; options: 166=Small|258=Medium|350=Big }
+      brandLogoBlock { label: Bloc de logotip per defecte; properties: externalBackgroundVisible=true image imageWidth=258; variant: externalBackgroundVisible; theme: contentTheme}
+
+      logoBlock longTextStyle { label: Text alternatiu; }
+      logoBlock imageWidth { label: Mida de la imatge; widget: select; options: 166=Small|258=Medium|350=Big }
+      logoBlock { label: Bloc de logotip; properties: externalBackgroundVisible=true image imageWidth=258; variant: externalBackgroundVisible; theme: contentTheme}
+
+      titleBlock { label: Títol; theme: contentTheme}
+
+      imageBlock longTextStyle { label: Text alternatiu; }
+      imageBlock { label: Imatge; properties: gutterVisible=false; variant: gutterVisible; theme: contentTheme }
+
+      doubleImageBlock longTextStyle { label: Text alternatiu; }
+      doubleImageBlock { label: Galeria de dos imatges; properties: gutterVisible=false fixedImageHeightVisible=true; variant: gutterVisible; theme: contentTheme }
+
+      tripleImageBlock longTextStyle { label: Alternative Text; }
+      tripleImageBlock { label: Galeria de tres imatges;properties:gutterVisible=false fixedImageHeightVisible=true; variant: gutterVisible; theme: contentTheme}
+
+      buttonBlock { label: Bloc botó; theme: contentTheme}
+      hrBlock { label: Bloc separador;  theme: contentTheme}
+      /* imageSeparatorBlock { label: Image Separator Block;  theme: contentTheme} */
+      spacerBlock { label: Bloc separador; properties: externalBackgroundVisible=true; theme: contentTheme}
+
+      spacerBlock:preview,
+      brandLogoBlock:preview,
+      logoBlock:preview { -ko-background-color: @[externalBackgroundColor] }
+
+      preheaderBlock:preview,
+      hrBlock:preview,
+      sideArticleBlock:preview,
+      textBlock:preview,
+      singleArticleBlock:preview,
+      doubleArticleBlock:preview,
+      tripleArticleBlock:preview,
+      titleBlock:preview,
+      footerBlock:preview,
+      socialBlock:preview,
+      buttonBlock:preview,
+      titleBlock:preview { -ko-background-color: @[backgroundColor] }
+    }
+  </style>
+  <style type="text/css" data-inline="true">
+    body { margin: 0; padding: 0; }
+    img { border: 0px; display: block; }
+
+    .socialLinks { font-size: 6px; }
+    .socialLinks a {
+      display: inline-block;
+    }
+
+    .long-text p { margin: 1em 0px; }
+    .long-text p:last-child { margin-bottom: 0px; }
+    .long-text p:first-child { margin-top: 0px; }
+  </style>
+  <style type="text/css">
+    /* yahoo, hotmail */
+    .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height: 100%; }
+    .yshortcuts a { border-bottom: none !important; }
+    .vb-outer { min-width: 0 !important; }
+    .RMsgBdy, .ExternalClass {
+      width: 100%;
+      background-color: #3f3f3f;
+      -ko-background-color: @[_theme_.frameTheme.backgroundColor]
+    }
+
+    /* outlook/office365 add buttons outside not-linked images and safari have 2px margin */
+    [o365] button { margin: 0 !important; }
+
+    /* outlook */
+    table { mso-table-rspace: 0pt; mso-table-lspace: 0pt; }
+    #outlook a { padding: 0; }
+    img { outline: none; text-decoration: none; border: none; -ms-interpolation-mode: bicubic; }
+    a img { border: none; }
+
+    @media screen and (max-width: 600px) {
+      table.vb-container, table.vb-row {
+        width: 95% !important;
+      }
+
+      .mobile-hide { display: none !important; }
+      .mobile-textcenter { text-align: center !important; }
+
+      .mobile-full {
+        width: 100% !important;
+        max-width: none !important;
+      }
+    }
+    /* previously used also screen and (max-device-width: 600px) but Yahoo Mail doesn't support multiple queries */
+  </style>
+  <style type="text/css" data-inline="true">
+
+  [data-ko-block=preheaderBlock] .links-color a,
+  [data-ko-block=preheaderBlock] .links-color a:link,
+  [data-ko-block=preheaderBlock] .links-color a:visited,
+  [data-ko-block=preheaderBlock] .links-color a:hover {
+    color: #919191;
+    text-decoration: underline;
+  }
+
+    [data-ko-block=tripleArticleBlock] .links-color a,
+    [data-ko-block=tripleArticleBlock] .links-color a:link,
+    [data-ko-block=tripleArticleBlock] .links-color a:visited,
+    [data-ko-block=tripleArticleBlock] .links-color a:hover {
+      color: #a11d33;
+      -ko-color: @longTextStyle.linksColor;
+      text-decoration: none;
+    }
+
+    [data-ko-block=doubleArticleBlock] .links-color a,
+    [data-ko-block=doubleArticleBlock] .links-color a:link,
+    [data-ko-block=doubleArticleBlock] .links-color a:visited,
+    [data-ko-block=doubleArticleBlock] .links-color a:hover {
+      color: #a11d33;
+      -ko-color: @longTextStyle.linksColor;
+      text-decoration: none;
+    }
+
+    [data-ko-block=singleArticleBlock] .links-color a,
+    [data-ko-block=singleArticleBlock] .links-color a:link,
+    [data-ko-block=singleArticleBlock] .links-color a:visited,
+    [data-ko-block=singleArticleBlock] .links-color a:hover {
+      color: #a11d33;
+      -ko-color: @longTextStyle.linksColor;
+      text-decoration: none;
+    }
+
+    [data-ko-block=textBlock] .links-color a,
+    [data-ko-block=textBlock] .links-color a:link,
+    [data-ko-block=textBlock] .links-color a:visited,
+    [data-ko-block=textBlock] .links-color a:hover {
+      color: #a11d33;
+      -ko-color: @longTextStyle.linksColor;
+      text-decoration: none;
+    }
+
+    [data-ko-block=sideArticleBlock] .links-color a,
+    [data-ko-block=sideArticleBlock] .links-color a:link,
+    [data-ko-block=sideArticleBlock] .links-color a:visited,
+    [data-ko-block=sideArticleBlock] .links-color a:hover {
+      color: #a11d33;
+      -ko-color: @longTextStyle.linksColor;
+      text-decoration: none;
+    }
+
+    [data-ko-block=socialBlock] .links-color a,
+    [data-ko-block=socialBlock] .links-color a:link,
+    [data-ko-block=socialBlock] .links-color a:visited,
+    [data-ko-block=socialBlock] .links-color a:hover {
+      color: #ffffff;
+      -ko-color: @longTextFooterStyle.linksColor;
+      text-decoration: none;
+    }
+
+    [data-ko-block=footerBlock] .links-color a,
+    [data-ko-block=footerBlock] .links-color a:link,
+    [data-ko-block=footerBlock] .links-color a:visited,
+    [data-ko-block=footerBlock] .links-color a:hover {
+      color: #ffffff;
+      -ko-color: @longTextFooterStyle.linksColor;
+      text-decoration: none;
+    }
+
+    [data-ko-block=doubleImageBlock] a,
+    [data-ko-block=doubleImageBlock] a:link,
+    [data-ko-block=doubleImageBlock] a:visited,
+    [data-ko-block=doubleImageBlock] a:hover {
+      color: #a11d33;
+      -ko-color: @longTextStyle.linksColor;
+      text-decoration: none;
+    }
+    [data-ko-block=tripleImageBlock] a,
+    [data-ko-block=tripleImageBlock] a:link,
+    [data-ko-block=tripleImageBlock] a:visited,
+    [data-ko-block=tripleImageBlock] a:hover {
+      color: #a11d33;
+      -ko-color: @longTextStyle.linksColor;
+      text-decoration: none;
+    }
+    [data-ko-block=imageBlock] a,
+    [data-ko-block=imageBlock] a:link,
+    [data-ko-block=imageBlock] a:visited,
+    [data-ko-block=imageBlock] a:hover {
+      color: #a11d33;
+      -ko-color: @longTextStyle.linksColor;
+      text-decoration: none;
+    }
+  </style>
+  <template-def>
+
+  <template tag="block">
+    <def attr="bgcolor" selector="table" bgcolor="{{bgcolor}}" style="background-color: {{bgcolor}}"></def>
+    <def attr="bgcolor-prop" selector="table" style="-ko-background-color: @[{{bgcolor-prop}}]; -ko-attr-bgcolor: @[{{bgcolor-prop}}]"></def>
+    <def attr="name" selector="table" data-ko-block="{{name}}"></def>
+    <def attr="label"></def>
+    <def attr="theme"></def>
+    <def attr="td-styles" selector="td" style="{{td-styles}}"></def>
+    <def attr="height" selector="td" height="{{height}}" style="height: {{height}}px"></def>
+    <def attr="height-prop" selector="td" style="-ko-height: @[{{height-prop}}]px; -ko-attr-height: @[{{height-prop}}]"></def>
+    <tmpl>
+    <!-- {{name}} -->
+    <table role="presentation" class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0">
+      <tr><td class="vb-outer" align="center" valign="top" style="padding-left: 9px; padding-right: 9px; font-size: 0">{{replacedcontent}}</td></tr>
+    </table>
+    <!-- /{{name}} -->
+    </tmpl>
+  </template>
+
+  <template tag="block-inner">
+    <def attr="if" selector="div[data-ko-wrap]" data-ko-display="{{if}}"></def>
+    <def attr="false" selector="div[data-ko-wrap]" style="display: none"></def>
+
+    <def attr="inner-bgcolor" selector="div div table" bgcolor="{{inner-bgcolor}}" style="background-color: {{inner-bgcolor}}"></def>
+    <def attr="inner-bgcolor-prop" selector="div div table" style="-ko-background-color: @[{{inner-bgcolor-prop}}]; -ko-attr-bgcolor: @[{{inner-bgcolor-prop}}]"></def>
+    <def attr="inner-padding" selector="div div table" cellspacing="{{inner-padding}}" style="mso-cellspacing: {{inner-padding}}px; border-spacing: {{inner-padding}}px"></def>
+    <def attr="inner-width" selector="div div table, cc-table" width="{{inner-width}}"></def>
+    <!-- div[class] is required by old webkits not supporting max-width on tables -->
+    <!-- Check on Safari for Windows v4.0.5 531.2.7 -->
+    <def attr="inner-width" selector="div div table, div div" style="max-width: {{inner-width}}px; -mru-width: 0px"></def>
+    <def attr="inner-class" selector="div div table" class="{{inner-class}}"></def>
+    <!-- was display:inline-block", see https://github.com/voidlabs/versafix-template/issues/3 -->
+    <tmpl>{{#if}}<div data-ko-wrap="false" style="width: 100%;">{{/if}}<!--[if (gte mso 9)|(lte ie 8)]><table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0"><tr><td align="center" valign="top"><![endif]--><!--
+      --><div style="margin: 0 auto"><table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; width: 100%">
+        {{replacedcontent}}
+      </table></div><!--
+    --><!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->{{#if}}</div>{{/if}}</tmpl>
+  </template>
+
+  <template tag="columns">
+    <def attr="autowidth"></def>
+    <def attr="width" selector="cc-table" width="{{width}}"></def>
+    <!-- use a div inside the TD so that columns widths are handled correctly when the horizontal spacing of the container is different from its vertical spacing and the content should not fill 100% of the space but leave some spacing -->
+    <def attr="width" selector="div" style="max-width: {{width}}px; -mru-width: 0px"></def>
+    <def attr="td-styles" selector="td" style="{{td-styles}}"></def>
+    <tmpl><tr>
+      <td align="center" valign="top" style="font-size: 0"><div style="width:100%"><!--[if (gte mso 9)|(lte ie 8)]><table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0"><tr><![endif]--><!--
+        -->{{replacedcontent}}<!--
+      --><!--[if (gte mso 9)|(lte ie 8)]></tr></table><![endif]--></div></td>
+    </tr></tmpl>
+  </template>
+
+
+  <template tag="content">
+    <def attr="width" selector="table" width="{{width}}"></def>
+    <def attr="width" selector="div" style="max-width: {{width}}px; -mru-width: 0px"></def>
+    <def attr="width-prop" selector="table" style="-ko-attr-width: @[{{width-prop}}]"></def>
+    <!-- uso la forma con espressione perchè mosaico ha un bug nella ricerca del valore di default e non lo cerca nella prop precedente -->
+    <def attr="width-prop" selector="div" style="-ko-max-width: @[{{width-prop}} + 'px']"></def>
+
+    <!-- border-spacing forzato per orange -->
+    <def attr="spacing" selector="table" cellspacing="{{spacing}}" style="mso-cellspacing: {{spacing}}px; border-spacing: {{spacing}}px"></def>
+    <def attr="align" selector="table" align="{{align}}"></def>
+    <def attr="text-align" selector="table" style="text-align: {{text-align}}"></def>
+
+    <def attr="class" selector="div" class="{{class}}"></def>
+    <def attr="td-styles" selector="td" style="{{td-styles}}"></def>
+
+    <!-- the div used to have a  display: inline-block style. Removed it trying to remove unwanted space on iOS 10 -->
+    <tmpl><tr>
+      <td align="center" valign="top" style="font-size: 0"><div style="vertical-align:top; width:100%"><!--
+        --><table role="presentation" class="vb-content" border="0" cellspacing="0" cellpadding="0" style="border-collapse: separate; width: 100%">
+          {{replacedcontent}}
+        </table></div></td>
+    </tr></tmpl>
+  </template>
+
+
+  <template tag="column-content">
+    <def attr="if" selector="div[data-ko-wrap], cc-td" data-ko-display="{{if}}"></def>
+    <def attr="false" selector="div[data-ko-wrap], cc-td" style="display: none"></def>
+
+    <def attr="width" selector="cc-td, table" width="{{width}}"></def>
+    <def attr="width" selector="table" style="width: 100%"></def>
+    <def attr="width" selector="div" style="width: 100%; max-width: {{width}}px; -mru-width: 0px"></def>
+    <def attr="width-prop" selector="cc-td, table" style="-ko-attr-width: @[{{width-prop}}]"></def>
+    <!-- uso la forma con espressione perchè mosaico ha un bug nella ricerca del valore di default e non lo cerca nella prop precedente -->
+    <def attr="width-prop" selector="div" style="-ko-max-width: @[{{width-prop}} + 'px']"></def>
+
+    <!-- border-spacing forzato per orange -->
+    <def attr="spacing" selector="table" cellspacing="{{spacing}}" style="mso-cellspacing: {{spacing}}px; border-spacing: {{spacing}}px"></def>
+
+    <!-- workaround for Yandex issue with calc: https://github.com/voidlabs/versafix-template/issues/1 -->
+    <def attr="align" selector="table" align="{{align}}" style="-yandex-p: calc(2px - 3%)"></def>
+    <def attr="text-align" selector="table" style="text-align: {{text-align}}"></def>
+
+    <def attr="class" selector="cc-td, div" class="{{class}}"></def>
+
+    <!-- Here is the complex "hybrid layout" adaptive solution -->
+    <def attr="width-breakpoint" selector="div" style="min-width: calc({{width}} * 100% / {{width-breakpoint}}); -ko-min-width: @['calc(' + ({{#width-prop}}true ? {{width-prop}} : {{/width-prop}}{{width}}) * 100 / {{width-breakpoint}} + '%)']; max-width: calc(100%); -ko-max-width: @['calc(100%)']; width: calc({{width-breakpoint}} * {{width-breakpoint}}px - {{width-breakpoint}} * 100%); -ko-width: @['calc('+ {{width-breakpoint}} * {{width-breakpoint}} + 'px - ' + {{width-breakpoint}} * 100 +'%)']"></def>
+
+    <!-- border-collapse forced for Orange.fr compatibility -->
+    <tmpl>{{#if}}<div data-ko-wrap="false" style="display:inline-block" class="mobile-full">{{/if}}<!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top"><![endif]--><!--
+      --><div style="display:inline-block; vertical-align:top" class="mobile-full"><!--
+        --><table role="presentation" class="vb-content" border="0" cellspacing="0" cellpadding="0" style="border-collapse: separate">
+          {{replacedcontent}}
+        </table><!--
+      --></div><!--[if (gte mso 9)|(lte ie 8)]></td><![endif]-->{{#if}}</div>{{/if}}</tmpl>
+  </template>
+
+  <template tag="linked-text">
+    <def attr="if" selector="tr" data-ko-display="{{if}}"></def>
+    <def attr="false" selector="tr" style="display: none"></def>
+
+    <def attr="color" selector="td, a" style="color: {{color}}"></def>
+    <def attr="color-prop" selector="a" style="-ko-color: @[{{color-prop}}]"></def>
+    <def attr="decoration" selector="a" style="text-decoration: {{decoration}}"></def>
+    <def attr="size" selector="td" style="font-size: {{size}}"></def>
+    <def attr="face" selector="td" style="font-family: {{face}}"></def>
+    <def attr="href" selector="a" href="{{href}}"></def>
+    <def attr="href-prop" selector="a" style="-ko-attr-href: @[{{href-prop}}]"></def>
+    <def attr="editable" selector="a" data-ko-editable="{{editable}}"></def>
+
+    <def attr="align" selector="td" align="{{align}}" style="text-align: {{align}}"></def>
+
+    <def attr="style" selector="td" style="-ko-font-size: @[{{style}}.size]px; -ko-color: @{{style}}.color; -ko-font-family: @{{style}}.face"></def>
+    <def attr="style" selector="a" style="-ko-color: @{{style}}.color; -ko-text-decoration: @{{style}}.decoration"></def>
+
+    <tmpl><tr><td width="100%" valign="top" style="font-weight: normal"><a>{{replacedcontent}}</a></td></tr></tmpl>
+  </template>
+
+  <template tag="text">
+    <def attr="if" selector="tr" data-ko-display="{{if}}"></def>
+    <def attr="false" selector="tr" style="display: none"></def>
+
+    <def attr="color" selector="td" style="color: {{color}}"></def>
+    <def attr="size" selector="td" style="font-size: {{size}}"></def>
+    <def attr="face" selector="td" style="font-family: {{face}}"></def>
+    <def attr="editable" selector="span" data-ko-editable="{{editable}}"></def>
+    <def attr="content" selector="span" style="-ko-bind-text: @{{content}}"></def>
+
+    <def attr="align" selector="td" align="{{align}}" style="text-align: {{align}}"></def>
+
+    <def attr="style" selector="td" style="-ko-font-size: @[{{style}}.size]px; -ko-color: @{{style}}.color; -ko-font-family: @{{style}}.face; -ko-text-align: @{{style}}.align; -ko-attr-align: @{{style}}.align"></def>
+
+    <tmpl><tr>
+      <td width="100%" valign="top" style="font-weight: normal"><span style="font-weight: normal">{{replacedcontent}}</span></td>
+    </tr></tmpl>
+  </template>
+
+  <template tag="non-editable-text">
+    <def attr="if" selector="tr" data-ko-display="{{if}}"></def>
+    <def attr="false" selector="tr" style="display: none"></def>
+
+    <def attr="color" selector="td" style="color: {{color}}"></def>
+    <def attr="size" selector="td" style="font-size: {{size}}"></def>
+    <def attr="face" selector="td" style="font-family: {{face}}"></def>
+    <def attr="content" selector="span" style="-ko-bind-text: @{{content}}"></def>
+
+    <def attr="align" selector="td" align="{{align}}" style="text-align: {{align}}"></def>
+
+    <def attr="style" selector="td" style="-ko-font-size: @[{{style}}.size]px; -ko-color: @{{style}}.color; -ko-font-family: @{{style}}.face; -ko-text-align: @{{style}}.align; -ko-attr-align: @{{style}}.align"></def>
+
+    <tmpl><tr>
+      <td width="100%" valign="top" style="font-weight: normal" class="links-color"><span style="font-weight: normal">{{replacedcontent}}</span></td>
+    </tr></tmpl>
+  </template>
+
+  <template tag="long-text">
+    <def attr="if" selector="tr" data-ko-display="{{if}}"></def>
+    <def attr="false" selector="tr" style="display: none"></def>
+
+    <def attr="color" selector="td" style="color: {{color}}"></def>
+    <def attr="size" selector="td" style="font-size: {{size}}"></def>
+    <def attr="face" selector="td" style="font-family: {{face}}"></def>
+
+    <def attr="align" selector="td" align="{{align}}" style="text-align: {{align}}"></def>
+    <def attr="line-height" selector="td" style="line-height: {{line-height}}"></def>
+    <def attr="fixed-align" selector="td" align="{{fixed-align}}" style="text-align: {{fixed-align}}"></def>
+
+    <def attr="style" selector="td" style="-ko-font-size: @[{{style}}.size]px; -ko-color: @{{style}}.color; -ko-font-family: @{{style}}.face{{#align}}; -ko-text-align: @{{style}}.align; -ko-attr-align: @{{style}}.align{{/align}}{{#line-height}}; -ko-line-height: @[{{style}}.lineHeight]{{/line-height}}"></def>
+
+    <def attr="editable" selector="td" data-ko-editable="{{editable}}"></def>
+    <def attr="content" selector="td" style="-ko-bind-text: @{{content}}"></def>
+    <tmpl><tr><td class="long-text links-color" width="100%" valign="top" style="font-weight: normal">{{replacedcontent}}</td></tr></tmpl>
+  </template>
+
+
+  <template tag="linked-img">
+    <def attr="if" selector="tr" data-ko-display="{{if}}"></def>
+    <def attr="false" selector="tr" style="display: none"></def>
+
+    <def attr="color" selector="img" style="color: {{color}}"></def>
+    <def attr="size" selector="img" style="font-size: {{size}}"></def>
+    <def attr="face" selector="img" style="font-family: {{face}}"></def>
+    <def attr="style" selector="img" style="-ko-font-size: @[{{style}}.size]px; -ko-color: @{{style}}.color; -ko-font-family: @{{style}}.face"></def>
+
+    <def attr="padding-bottom" selector="td" style="padding-bottom: {{padding-bottom}}px"></def>
+
+    <def attr="editable" selector="a" data-ko-link="{{editable}}.url"></def>
+    <def attr="editable" selector="img" data-ko-editable="{{editable}}.src" style="-ko-attr-alt: @[{{editable}}.alt == '' ? null : {{editable}}.alt]"></def>
+
+    <def attr="content" selector="a" style="-ko-attr-href: @{{content}}.url"></def>
+    <def attr="content" selector="img" style="-ko-attr-src: @{{content}}.src; -ko-attr-alt: @[{{content}}.alt == '' ? null : {{content}}.alt]"></def>
+
+    <def attr="width" selector="img" width="{{width}}" style="width: 100%; max-width: {{width}}px"></def>
+    <def attr="width" selector="cc-div" style="width: {{width}}px"></def>
+    <def attr="width-prop" selector="img" style="-ko-attr-width: @[{{width-prop}}]; -ko-max-width: @[{{width-prop}}]px"></def>
+    <def attr="width-prop" selector="cc-div" style="-ko-width: @[{{width-prop}}]px"></def>
+    <def attr="width" selector="cc-div" style="-mru-width: 0px"></def>
+
+    <def attr="height" selector="img" height="{{height}}" style="height: auto"></def>
+    <def attr="placeholder-height" selector="img" data-ko-placeholder-height="{{placeholder-height}}" style="height: auto"></def>
+    <def attr="height-prop" selector="img" style="-ko-attr-height: @[{{height-prop}}]"></def>
+
+    <def attr="align" selector="td" align="{{align}}" style="text-align: {{align}}"></def>
+    <def attr="align" selector="img" align="{{align}}"></def>
+    <def attr="align" selector="tr" style="text-align: {{align}}"></def>
+
+    <def attr="src" selector="img" src="{{src}}"></def>
+    <def attr="src-prop" selector="img" style="-ko-attr-src: @[{{src-prop}}]"></def>
+
+    <def attr="href" selector="a" href="{{href}}"></def>
+
+    <def attr="class" selector="img" class="{{class}}"></def>
+
+    <def attr="alt" selector="img" alt="{{alt}}"></def>
+    <!-- the DIV is for old IE (IE in compatible mode), like Notes 8 showing full size images -->
+    <tmpl><tr><td width="100%" valign="top" align="center" class="links-color"><!--[if (lte ie 8)]><div style="display: inline-block"><![endif]--><a href=""><img alt="" border="0" hspace="0" align="center" vspace="0" style="vertical-align:top; height: auto; margin: 0 auto" /></a><!--[if (lte ie 8)]></div><![endif]--></td></tr></tmpl>
+  </template>
+
+  <template tag="btn">
+    <def attr="if" selector="tr" data-ko-display="{{if}}"></def>
+    <def attr="false" selector="tr" style="display: none"></def>
+
+    <def attr="inner-padding" selector="table" cellpadding="{{inner-padding}}" style="mso-padding-alt: {{inner-padding}}px {{inner-padding}}px {{inner-padding}}px {{inner-padding}}px"></def>
+    <def attr="inner-padding" selector="table td" style="padding: {{inner-padding}}px"></def>
+
+    <def attr="padding-top" selector="table" style="padding-top: {{padding-top}}px"></def>
+
+    <def attr="height" selector="table td" height="{{height}}"></def>
+
+    <def attr="inner-hpadding" selector="table td" style="padding-left: {{inner-hpadding}}; padding-right: {{inner-hpadding}}"></def>
+    <def attr="align" selector="td[valign], table" align="{{align}}"></def>
+
+    <def attr="href" selector="a" href="{{href}}"></def>
+
+    <def attr="bgcolor" selector="table td" bgcolor="{{bgcolor}}" style="background-color: {{bgcolor}}"></def>
+    <def attr="color" selector="table td, a" style="color: {{color}}"></def>
+    <def attr="size" selector="table td, a" style="font-size: {{size}}"></def>
+    <def attr="face" selector="table td, a" style="font-family: {{face}}"></def>
+    <def attr="radius" selector="table td" style="border-radius: {{radius}}px"></def>
+    <def attr="style" selector="table td" style="-ko-border-radius: @[{{style}}.radius]px; -ko-attr-bgcolor: @{{style}}.buttonColor; -ko-background-color: @{{style}}.buttonColor"></def>
+    <!-- Libero.it webmail alters font-size for a tags not defining font sizes inline -->
+    <def attr="style" selector="table td, a" style="-ko-font-size: @[{{style}}.size]px; -ko-color: @{{style}}.color; -ko-font-family: @{{style}}.face"></def>
+    <def attr="style" selector="td[valign], table" style="{{#align}}-ko-attr-align: @{{style}}.align{{/align}}"></def>
+
+    <def attr="editable" selector="span" data-ko-editable="{{editable}}.text"></def>
+    <def attr="editable" selector="a" style="-ko-attr-href: @{{editable}}.url"></def>
+
+    <!-- border-spacing: 0; needed for sfr.fr -->
+    <tmpl><tr>
+      <td valign="top"><table role="presentation" cellpadding="0" border="0" align="left" cellspacing="0" style="border-spacing: 0"><tr>
+        <td width="auto" valign="middle" align="center" style="text-align:center; font-weight: normal"><a href="" style="text-decoration: none; font-weight: normal"><span data-ko-wrap="false">{{replacedcontent}}</span></a></td>
+      </tr></table></td>
+    </tr></tmpl>
+  </template>
+
+  <template tag="share-btn">
+    <def attr="inner-padding" selector="table" cellspacing="{{inner-padding}}" style="mso-cellspacing: {{inner-padding}}px; border-collapse: separate; border-spacing: {{inner-padding}}px"></def>
+
+    <def attr="height" selector="table td" height="{{height}}"></def>
+
+    <def attr="inner-addhpadding" selector="table td:first-child" style="padding-left: {{inner-addhpadding}}"></def>
+    <def attr="inner-addhpadding" selector="table td:last-child" style="padding-right: {{inner-addhpadding}}"></def>
+
+    <def attr="href" selector="a" href="{{href}}"></def>
+    <def attr="href-prop" selector="a" style="-ko-attr-href: @[{{href-prop}}]"></def>
+
+    <def attr="bgcolor" selector="table" bgcolor="{{bgcolor}}" style="background-color: {{bgcolor}}"></def>
+    <def attr="color" selector="table td, a" style="color: {{color}}"></def>
+    <def attr="size" selector="table td, a" style="font-size: {{size}}"></def>
+    <def attr="face" selector="table td, a" style="font-family: {{face}}"></def>
+    <def attr="radius" selector="table" style="border-radius: {{radius}}px"></def>
+
+    <!-- Libero.it webmail alters font-size for a tags not defining font sizes inline -->
+    <def attr="custom-style" selector="table" style="-ko-attr-bgcolor: @{{custom-style}}.buttonColor; -ko-background-color: @{{custom-style}}.buttonColor"></def>
+    <def attr="custom-style" selector="table td, a" style="-ko-color: @{{custom-style}}.color"></def>
+
+    <def attr="btn-style" selector="table" style="-ko-border-radius: @[{{btn-style}}.radius]px;"></def>
+    <def attr="custom-style" selector="table" style="-ko-border-radius: @[{{custom-style}}.radius]px;"></def>
+
+    <def attr="font-style"   selector="table td, a" style="-ko-font-size: @[{{font-style}}.size]px; -ko-font-family: @{{font-style}}.face"></def>
+    <def attr="btn-style"    selector="table td, a" style="-ko-font-size: @[{{btn-style}}.size]px; -ko-font-family: @{{btn-style}}.face"></def>
+    <def attr="custom-style" selector="table td, a" style="-ko-font-size: @[{{custom-style}}.size]px; -ko-font-family: @{{custom-style}}.face"></def>
+
+    <!--
+    font-style (face/size)
+    btn-style (face/size/radius)
+    custom-style (face/size/radius/color)
+    -->
+
+    <def attr="editable" selector="span" data-ko-editable="{{editable}}"></def>
+
+    <def attr="icon-src" selector="img" src="{{icon-src}}"></def>
+    <def attr="icon-alt" selector="img" alt="{{icon-alt}}"></def>
+    <def attr="icon-size" selector="img" width="{{icon-size}}" height="{{icon-size}}" ></def>
+    <def attr="icon-size" selector="td.shareIcon" width="{{icon-size}}"></def>
+    <def attr="icon-size" selector="td" style="line-height: {{icon-size}}px;"></def>
+    <!-- border-spacing: 0; needed for sfr.fr -->
+    <tmpl><tr>
+      <td valign="top"><table role="presentation" cellpadding="0" border="0" align="center" cellspacing="0" style="border-spacing: 0"><tr>
+        {{#icon-src}}<td class="shareIcon" valign="middle" style="font-weight: normal"><a href="" style="text-decoration: none; font-weight: normal"><img style="display: block" /></a></td>{{/icon-src}}
+        <td width="auto" valign="middle" style="font-weight: normal"><a href="" style="text-decoration: none; font-weight: normal"><span data-ko-wrap="false">{{replacedcontent}}</span></a></td>
+      </tr></table></td>
+    </tr></tmpl>
+  </template>
+
+  <template tag="title-text">
+    <def attr="if" selector="tr" data-ko-display="{{if}}"></def>
+    <def attr="false" selector="tr" style="display: none"></def>
+
+    <def attr="color" selector="td" style="color: {{color}}"></def>
+    <def attr="size" selector="td" style="font-size: {{size}}"></def>
+    <def attr="face" selector="td" style="font-family: {{face}}"></def>
+    <def attr="align" selector="td" align="{{align}}" style="text-align: {{align}}"></def>
+    <def attr="editable" selector="span" data-ko-editable="{{editable}}"></def>
+    <def attr="content" selector="span" style="-ko-bind-text: @{{content}}"></def>
+    <def attr="style" selector="td" style="-ko-font-size: @[{{style}}.size]px; -ko-color: @{{style}}.color; -ko-font-family: @{{style}}.face; -ko-text-align: @{{style}}.align; -ko-attr-align: @{{style}}.align"></def>
+    <tmpl><tr>
+      <td width="100%" valign="top" style="font-weight: normal"><span style="font-weight: normal">{{replacedcontent}}</span></td>
+    </tr></tmpl>
+  </template>
+
+  <template tag="spacer">
+    <def attr="height" selector="td" height="{{height}}" style="line-height: {{height}}px"></def>
+    <def attr="height-prop" selector="td" style="-ko-line-height: @[{{height-prop}}]px; -ko-attr-height: @[{{height-prop}}]"></def>
+    <!-- padding: 0 and border-spacing: 0 needed for Orange.fr and Sfr.fr -->
+    <tmpl><tr>
+        <td width="100%" height="1" style="padding: 0; font-size:1px; line-height: 1px; width: 100%">&nbsp;</td>
+      </tr></tmpl>
+  </template>
+
+  <template tag="divider">
+    <def attr="color" selector="table td" style="background-color: {{color}}"></def>
+    <def attr="width" selector="table" width="{{width}}%" style="width: {{width}}%"></def>
+    <!-- use max-height/overflow to avoid iOS mail with accessibility options to show "large" dividers: https://github.com/voidlabs/versafix-template/issues/2 -->
+    <def attr="height" selector="table td" height="{{height}}" style="line-height: {{height}}px; max-height: {{height}}px; overflow: hidden;"></def>
+    <def attr="style" selector="table td" style="-ko-background-color: @{{style}}.color; -ko-attr-height: @{{style}}.hrHeight; -ko-line-height: @[{{style}}.hrHeight]px; -ko-max-height: @[{{style}}.hrHeight]px"></def>
+    <def attr="style" selector="table" style="-ko-width: @[{{style}}.hrWidth]%; -ko-attr-width: @[{{style}}.hrWidth]%"></def>
+    <!-- padding: 0 and border-spacing: 0 needed for Orange.fr and Sfr.fr -->
+    <tmpl><tr>
+      <td valign="top" align="center"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border-spacing: 0"><tr>
+        <td width="100%" height="1" style="padding: 0; font-size:1px; line-height: 1px; max-height: 1px; width: 100%">&nbsp;</td>
+      </tr></table></td>
+    </tr></tmpl>
+  </template>
+
+  <template tag="custom-row">
+    <def attr="if" selector="tr" data-ko-display="{{if}}"></def>
+    <def attr="false" selector="tr" style="display: none"></def>
+
+    <def attr="align" selector="td" align="{{align}}" style="text-align: {{align}}"></def>
+    <def attr="class" selector="td" class="{{class}}"></def>
+    <tmpl><tr><td width="100%" valign="top" style="font-weight: normal">{{replacedcontent}}</td></tr></tmpl>
+  </template>
+
+  <template tag="social-icon">
+    <def attr="if" selector="span, a" data-ko-display="{{if}}"></def>
+    <def attr="false" selector="span, a" style="display: none"></def>
+
+    <def attr="src" selector="img" src="{{src}}"></def>
+
+    <def attr="prefix"></def>
+    <def attr="src-prop" selector="img" style="-ko-attr-src: @[{{src-prop}}]"></def>
+
+    <!-- use multiple backgroun declaration so clients not supporting border-radius won't show the background too -->
+    <!-- we used to use url() with no content, but this made some sub-request on web versions/web clients: https://github.com/voidlabs/versafix-template/issues/5 -->
+    <def attr="color" selector="img" style="background: url(https://), {{color}}"></def>
+    <def attr="color-prop" selector="img" style="-ko-background: @['url(https://), '+{{color-prop}}]"></def>"
+    <def attr="size" selector="img" width="{{size}}" height="{{size}}"></def>
+    <def attr="size-prop" selector="img" style="-ko-attr-width: @[{{size-prop}}]; -ko-attr-height: @[{{size-prop}}]"></def>
+    <def attr="radius" selector="img" style="border-radius: {{radius}}px"></def>
+    <def attr="alt" selector="img" alt="{{alt}}"></def>
+    <def attr="href-prop" selector="a" style="-ko-attr-href: @[{{href-prop}}]"></def>
+    <def attr="href" selector="a" href="{{href}}"></def>
+    <tmpl><span data-ko-wrap="false">&nbsp;</span><a href=""><img border="0" style="display: inline-block; vertical-align: top; padding-bottom: 0px" /></a></tmpl>
+  </template>
+
+  <template tag="footer-link">
+    <def attr="if" selector="span, a" data-ko-display="{{if}}"></def>
+    <def attr="false" selector="span, a" style="display: none"></def>
+    <def attr="href-prop" selector="a" style="-ko-attr-href: @[{{href-prop}}]"></def>
+    <tmpl><span data-ko-wrap="false">&nbsp;</span><a href="">{{replacedcontent}}</a></tmpl>
+  </template>
+
+  <default selector="block[theme='frameTheme']" bgcolor="#3f3f3f" bgcolor-prop="backgroundColor"></default>
+  <default selector="block" theme="contentTheme" bgcolor="#efefef" bgcolor-prop="externalBackgroundColor"></default>
+
+  <default selector="block-inner" inner-width="570"></default>
+
+  <default selector="block[theme='contentTheme'] block-inner:not([if='externalBackgroundVisible'])" inner-bgcolor="#ffffff" inner-bgcolor-prop="backgroundColor"></default>
+
+  <default selector="block[name='logoBlock'] block-inner[if='externalBackgroundVisible'] linked-img, block[name='brandLogoBlock'] block-inner[if='externalBackgroundVisible'] linked-img" color="#f3f3f3" size="18px" face="Arial, Helvetica, sans-serif" style="externalTextStyle"></default>
+
+  <default selector="columns:not([autowidth])" width="552"></default>
+  <!-- force border-spacing to 0 for Sfr.fr/Orange.fr -->
+  <default selector="column-content" spacing="0" align="left"></default>
+  <default selector="columns:not([autowidth]) column-content" width-breakpoint="552"></default>
+  <default selector="content" spacing="0" width="552"></default>
+
+
+  <default selector="block[theme='frameTheme'] linked-text" color="#ffffff" decoration="none" style="linkStyle"></default>
+  <default selector="block[theme='frameTheme'] long-text"></default>
+  <default selector="block[theme='frameTheme'] non-editable-text" color="#919191"></default>
+  <default selector="block[theme='frameTheme'] text, block[theme='frameTheme'] long-text" color="#919191" style="longTextStyle"></default>
+
+
+  <default selector="block[theme='contentTheme'] text" size="18px" style="titleTextStyle"></default>
+  <default selector="block[theme='contentTheme'] long-text" line-height="normal" style="longTextStyle"></default>
+  <default selector="share-btn" inner-addhpadding="4px" icon-size="24" icon-alt="{{name}}"></default>
+  <default selector="block[theme='contentTheme'] btn" inner-hpadding="18px" style="buttonStyle"></default>
+  <default selector="block[theme='contentTheme'] btn, share-btn" inner-padding="6" bgcolor="#a11d33" radius="4"></default>
+  <default selector="block[theme='contentTheme'] linked-img" style="longTextStyle"></default>
+
+  <default selector="divider" color="#3f3f3f"></default>
+  <default selector="text, non-editable-text, long-text, linked-img" face="Arial, Helvetica, sans-serif" color="#3f3f3f" size="13px"></default>
+  <default selector="title-text, linked-text" face="Arial, Helvetica, sans-serif" color="#a11d33" size="13px"></default>
+  <default selector="share-btn, btn" face="Arial, Helvetica, sans-serif" color="#ffffff" size="13px"></default>
+  <default selector="text, non-editable-text, title-text, long-text:not([fixed-align]), btn, linked-text" align="left"></default>
+
+  <!-- immages on gallery blocks are shown full width (100%) on mobile -->
+  <default selector="*[if='gutterVisible eq false'] linked-img" class="mobile-full"></default>
+
+  <default selector="social-icon" size="32" radius="50"></default>
+
+
+<!--
+    <block name="imageSeparatorBlock" label="Image Separator">
+      <block-inner inner-padding="0" inner-class="vb-container" inner-bgcolor="#bfbfbf" inner-bgcolor-prop="externalBackgroundColor">
+        <linked-img width="570" height="52"
+          src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=570%2C52"
+          src-prop="'img?method=magic&params=0,0&src=uploads/fgbg.png&src2=uploads/shadow2.png&white='+externalBackgroundColor+'&black='+backgroundColor"></linked-img>
+        <linked-img width="570" height="52"
+          src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=570%2C52"
+          src-prop="'img?method=colorize&params='+backgroundColor+',%23FF00FF,90&src=uploads/fgbg-colorize.png'"></linked-img>
+      </block-inner>
+    </block>
+-->
+
+
+  </template-def>
+</head>
+<body bgcolor="#3f3f3f" size=16px; text="#919191" alink="#a11d33" vlink="#a11d33" style="background-color: #3f3f3f; color: #919191;
+  -ko-background-color: @_theme_.frameTheme.backgroundColor; -ko-attr-bgcolor: @_theme_.frameTheme.backgroundColor; -ko-color: @_theme_.frameTheme.longTextStyle.color;
+  -ko-attr-text: @_theme_.frameTheme.longTextStyle.color; -ko-attr-alink: @_theme_.frameTheme.longTextStyle.linksColor;
+  -ko-attr-vlink: @_theme_.frameTheme.longTextStyle.linksColor"><center>
+
+  <div data-ko-display="preheaderVisible" data-ko-wrap="false">
+
+    <block name="preheaderBlock" label="Preheader Block" theme="frameTheme">
+      <div data-ko-display="preheaderLinkOption neq 'none'" style="display: none; font-size:1px; line-height: 1px; max-height:0px; max-width: 0px; opacity: 0; overflow: hidden;
+          -ko-bind-text: @preheaderText"></div>
+      <block-inner inner-padding="0" inner-class="vb-row">
+        <columns td-styles="padding: 0 9px"><!--
+          --><column-content width="276" spacing="9">
+            <text false if="preheaderLinkOption eq 'visible'" content="preheaderText"></text>
+          </column-content><!--
+          --><column-content width="276" spacing="9" class="mobile-hide">
+            <non-editable-text align="right">Si no veus bé aquest correu fés clic <a href="[show_link]">aquí</a></non-editable-text>
+          </column-content><!--
+        --></columns>
+      </block-inner>
+    </block>
+
+  </div>
+
+  <div data-ko-container="main" data-ko-wrap="false">
+
+    <block name="brandLogoBlock" label="Brand Logo Block">
+      <block-inner if="externalBackgroundVisible" inner-padding="9" inner-class="vb-row">
+        <content width="276" spacing="9" width-prop="18 + Math.round(imageWidth)">
+          <linked-img width="258" placeholder-height="150" width-prop="imageWidth"
+            src="img/logo258x150.png" href="https://www.fundaciocarlesblanch.org" ></linked-img>
+        </content>
+      </block-inner>
+      <block-inner false if="externalBackgroundVisible eq false" inner-padding="9" inner-class="vb-row">
+        <content width="276" spacing="9" width-prop="18 + Math.round(imageWidth)">
+          <linked-img width="258" placeholder-height="150" width-prop="imageWidth"
+            src="img/logo258x150.png" href="https://www.fundaciocarlesblanch.org" ></linked-img>
+        </content>
+      </block-inner>
+    </block>
+
+    <block name="logoBlock" label="Logo Block">
+      <block-inner if="externalBackgroundVisible" inner-padding="9" inner-class="vb-row">
+        <content width="276" spacing="9" width-prop="18 + Math.round(imageWidth)">
+          <linked-img width="258" placeholder-height="150" width-prop="imageWidth"
+            src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=258%2C150" editable="image"></linked-img>
+        </content>
+      </block-inner>
+      <block-inner false if="externalBackgroundVisible eq false" inner-padding="9" inner-class="vb-row">
+        <content width="276" spacing="9" width-prop="18 + Math.round(imageWidth)">
+          <linked-img width="258" placeholder-height="150" width-prop="imageWidth"
+            src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=258%2C150" editable="image"></linked-img>
+        </content>
+      </block-inner>
+    </block>
+
+    <block name="sideArticleBlock" label="Image+Text Block">
+      <block-inner inner-padding="9" inner-class="vb-row">
+        <columns><!--
+          --><column-content if="imagePos eq 'left'" width="184" spacing="9" width-prop="18 + Math.round(imageWidth)">
+            <linked-img editable="image" width="166" width-prop="imageWidth" placeholder-height="130"
+              src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=166%2C130"></linked-img>
+          </column-content><!--
+          --><column-content width="368" width-prop="570 - 2 * 18 - Math.round(imageWidth)" spacing="9">
+            <text editable="titleText" if="titleVisible">Títol</text>
+            <long-text editable="longText"><p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p></long-text>
+            <btn editable="buttonLink" if="buttonVisible" padding-top="4">Botó</btn>
+          </column-content><!--
+          --><column-content false if="imagePos eq 'right'" width="184" spacing="9" width-prop="18 + Math.round(imageWidth)">
+            <linked-img editable="image" width="166" width-prop="imageWidth" placeholder-height="130"
+              src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=166%2C130"></linked-img>
+          </column-content><!--
+        --></columns>
+      </block-inner>
+    </block>
+
+    <block name="singleArticleBlock" label="Image/Text Block">
+      <block-inner inner-padding="9" inner-class="vb-row">
+        <content spacing="9" width="552">
+          <linked-img if="imageVisible" editable="image" width="534" width-prop="imageWidth" placeholder-height="150"
+            src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=534%2C150" padding-bottom="9"></linked-img>
+          <text editable="text" if="titleVisible">Títol de la secció</text>
+          <long-text editable="longText"><p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p></long-text>
+          <btn editable="buttonLink" if="buttonVisible" padding-top="4">Botó</btn>
+        </content>
+      </block-inner>
+    </block>
+
+    <block name="titleBlock" label="Title Block">
+      <block-inner inner-padding="0" inner-class="vb-row">
+        <content spacing="9" td-styles="padding: 0 9px">
+          <title-text editable="text" align="center" size="22px" style="bigTitleStyle">Títol de la secció</title-text>
+        </content>
+      </block-inner>
+    </block>
+
+    <block name="textBlock" label="Text Block">
+      <block-inner inner-padding="18" inner-class="vb-container">
+        <long-text editable="longText"><p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts.</p>
+          <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p></long-text>
+      </block-inner>
+    </block>
+
+    <block name="tripleArticleBlock" label="3 Columns Block">
+      <block-inner inner-padding="9" inner-class="vb-row">
+        <columns><repeater repeat="left,middle,right" height="90,70,110"><!--
+          --><column-content spacing="9" width="184">
+            <linked-img if="imageVisible and fixedImageHeightVisible" editable="{{repeat}}Image" width="166" height="90" height-prop="imageHeight" padding-bottom="9"
+              src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=166%2C90"></linked-img>
+            <linked-img false if="imageVisible and fixedImageHeightVisible eq false" editable="{{repeat}}Image" width="166" placeholder-height="{{height}}" padding-bottom="9"
+              src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=166%2C100"></linked-img>
+            <text editable="{{repeat}}TitleText" if="titleVisible">Títol</text>
+            <long-text editable="{{repeat}}LongText"><p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts.</p></long-text>
+            <btn editable="{{repeat}}ButtonLink" if="buttonVisible" padding-top="4">Botó</btn>
+          </column-content><!--
+        --></repeater></columns>
+      </block-inner>
+    </block>
+
+    <block name="doubleArticleBlock" label="2 Columns Block">
+      <block-inner inner-padding="9" inner-class="vb-row">
+        <columns><repeater repeat="left,right"><!--
+            --><column-content spacing="9" width="276">
+              <linked-img if="imageVisible and fixedImageHeightVisible" editable="{{repeat}}Image" width="258" height="100" height-prop="imageHeight" padding-bottom="9"
+                src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=258%2C100"></linked-img>
+              <linked-img false if="imageVisible and fixedImageHeightVisible eq false" editable="{{repeat}}Image" width="258" placeholder-height="120" padding-bottom="9"
+                src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=258%2C120"></linked-img>
+              <text editable="{{repeat}}TitleText" if="titleVisible">Títol</text>
+              <long-text editable="{{repeat}}LongText"><p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts.</p></long-text>
+              <btn editable="{{repeat}}ButtonLink" if="buttonVisible" padding-top="4">Botó</btn>
+            </column-content><!--
+          --></repeater></columns>
+      </block-inner>
+    </block>
+
+    <block name="hrBlock" label="Separator Block">
+      <block-inner inner-padding="0" inner-class="vb-row">
+        <content spacing="9" td-styles="padding: 0 9px">
+          <divider width="100" height="1" style="hrStyle"></divider>
+        </content>
+      </block-inner>
+    </block>
+
+    <block name="buttonBlock" label="Button Block">
+      <block-inner inner-padding="18" inner-class="vb-container">
+        <btn editable="link" inner-padding="12" align="center" inner-hpadding="14px" size="22px" style="bigButtonStyle">Botó</btn>
+      </block-inner>
+    </block>
+
+    <block name="imageBlock" label="Image">
+      <block-inner if="gutterVisible eq false" inner-padding="0" inner-class="vb-container">
+        <linked-img editable="image" width="570" placeholder-height="200"
+          src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=570%2C200"></linked-img>
+      </block-inner>
+      <block-inner false if="gutterVisible" inner-padding="18" inner-class="vb-container">
+        <linked-img editable="image" width="534" placeholder-height="280"
+          src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=534%2C280"></linked-img>
+      </block-inner>
+    </block>
+
+    <block name="doubleImageBlock" label="Two Image Gallery">
+      <block-inner if="gutterVisible eq false" inner-padding="0" inner-class="vb-row">
+        <columns width="570"><repeater repeat="left,right"><!--
+            --><column-content width-breakpoint="570" width="285">
+              <linked-img if="fixedImageHeightVisible" editable="{{repeat}}Image" width="285" height="180" height-prop="imageHeight"
+                src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=285%2C180"></linked-img>
+              <linked-img false if="fixedImageHeightVisible eq false" editable="{{repeat}}Image" width="285" placeholder-height="180"
+                src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=285%2C180"></linked-img>
+            </column-content><!--
+          --></repeater></columns>
+      </block-inner>
+      <block-inner false if="gutterVisible" inner-padding="9" inner-class="vb-row">
+        <columns><repeater repeat="left,right"><!--
+            --><column-content spacing="9" width="276">
+              <linked-img if="fixedImageHeightVisible" editable="{{repeat}}Image" width="258" height="180" height-prop="imageHeight"
+                src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=258%2C180"></linked-img>
+              <linked-img false if="fixedImageHeightVisible eq false" editable="{{repeat}}Image" width="258" placeholder-height="180"
+                src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=258%2C180"></linked-img>
+            </column-content><!--
+      --></repeater></columns>
+      </block-inner>
+    </block>
+
+    <block name="tripleImageBlock" label="Galeria de tres imatges">
+      <block-inner if="gutterVisible eq false" inner-padding="0" inner-class="vb-row">
+        <columns width="570"><repeater repeat="left,middle,right"><!--
+            --><column-content width-breakpoint="570" width="190">
+              <linked-img if="fixedImageHeightVisible" editable="{{repeat}}Image" width="190" height="160" height-prop="imageHeight"
+                src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=190%2C160"></linked-img>
+              <linked-img false if="fixedImageHeightVisible eq false" editable="{{repeat}}Image" width="190" placeholder-height="160"
+                src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=190%2C160"></linked-img>
+            </column-content><!--
+       --></repeater></columns>
+      </block-inner>
+      <block-inner false if="gutterVisible" inner-padding="9" inner-class="vb-row">
+        <columns><repeater repeat="left,middle,right"><!--
+            --><column-content spacing="9" width="184">
+              <linked-img if="fixedImageHeightVisible" editable="{{repeat}}Image" width="166" height="160" height-prop="imageHeight"
+                src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=166%2C160"></linked-img>
+              <linked-img false if="fixedImageHeightVisible eq false" editable="{{repeat}}Image" width="166" placeholder-height="160"
+                src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=166%2C160"></linked-img>
+            </column-content><!--
+          --></repeater></columns>
+      </block-inner>
+    </block>
+
+    <block name="bigSocialBlock" label="Bloc social">
+      <block-inner inner-padding="18" inner-class="vb-container links-color socialLinks mobile-textcenter">
+        <custom-row false if="bigSocialIconType eq 'black'" align="center" class="links-color socialLinks mobile-textcenter">
+          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,if,false if,false if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/csantjaume,http://twitter.com/CentreSantJaume,https://www.fundaciocarlesblanch.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/centresantjaume,https://vimeo.com/,https://www.instagram.com/,https://www.youtube.com/channel/FCBCSJ">
+            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-black-96.png" alt="{{name}}"></social-icon>
+          </repeater>
+        </custom-row>
+        <custom-row false if="bigSocialIconType eq 'bw'" align="center" class="links-color socialLinks mobile-textcenter">
+          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,if,false if,false if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/csantjaume,http://twitter.com/CentreSantJaume,https://www.fundaciocarlesblanch.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/centresantjaume,https://vimeo.com/,https://www.instagram.com/,https://www.youtube.com/channel/FCBCSJ">
+            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" color="#818181" src="img/icons/{{prefix}}-bw-96.png" alt="{{name}}"></social-icon>
+          </repeater>
+        </custom-row>
+        <custom-row false if="bigSocialIconType eq 'colors'" align="center" class="links-color socialLinks mobile-textcenter">
+          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,if,false if,false if,if" color="#3b5998,#4099FF,#606060,#007bb6,#C92228,#ff0084,#45bbff,#bc2a8d,#cd201f" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/csantjaume,http://twitter.com/CentreSantJaume,https://www.fundaciocarlesblanch.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/centresantjaume,https://vimeo.com/,https://www.instagram.com/,https://www.youtube.com/channel/FCBCSJ">
+            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" color="{{color}}" src="img/icons/{{prefix}}-colors-96.png" alt="{{name}}"></social-icon>
+          </repeater>
+        </custom-row>
+        <custom-row false if="bigSocialIconType eq 'colorsbrand'" align="center" class="links-color socialLinks mobile-textcenter">
+          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,if,false if,false if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/csantjaume,http://twitter.com/CentreSantJaume,https://www.fundaciocarlesblanch.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/centresantjaume,https://vimeo.com/,https://www.instagram.com/,https://www.youtube.com/channel/FCBCSJ">
+            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" color="#a11d33" src="img/icons/{{prefix}}-colorsbrand-96.png" alt="{{name}}"></social-icon>
+          </repeater>
+        </custom-row>
+        <custom-row false if="bigSocialIconType eq 'coloured'" align="center" class="links-color socialLinks mobile-textcenter">
+          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,if,false if,false if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/csantjaume,http://twitter.com/CentreSantJaume,https://www.fundaciocarlesblanch.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/centresantjaume,https://vimeo.com/,https://www.instagram.com/,https://www.youtube.com/channel/FCBCSJ">
+            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-coloured-96.png" alt="{{name}}"></social-icon>
+          </repeater>
+        </custom-row>
+        <custom-row false if="bigSocialIconType eq 'colouredbrand'" align="center" class="links-color socialLinks mobile-textcenter">
+          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,if,false if,false if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/csantjaume,http://twitter.com/CentreSantJaume,https://www.fundaciocarlesblanch.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/centresantjaume,https://vimeo.com/,https://www.instagram.com/,https://www.youtube.com/channel/FCBCSJ">
+            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-colouredbrand-96.png" alt="{{name}}"></social-icon>
+          </repeater>
+        </custom-row>
+        <custom-row false if="bigSocialIconType eq 'rdbl'" align="center" class="links-color socialLinks mobile-textcenter">
+          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,if,false if,false if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/csantjaume,http://twitter.com/CentreSantJaume,https://www.fundaciocarlesblanch.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/centresantjaume,https://vimeo.com/,https://www.instagram.com/,https://www.youtube.com/channel/FCBCSJ">
+            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-rdbl-96.png" alt="{{name}}"></social-icon>
+          </repeater>
+        </custom-row>
+        <custom-row if="bigSocialIconType eq 'rdbrandcol'" align="center" class="links-color socialLinks mobile-textcenter">
+          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,if,false if,false if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/csantjaume,http://twitter.com/CentreSantJaume,https://www.fundaciocarlesblanch.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/centresantjaume,https://vimeo.com/,https://www.instagram.com/,https://www.youtube.com/channel/FCBCSJ">
+            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-rdbrandcol-96.png" alt="{{name}}"></social-icon>
+          </repeater>
+        </custom-row>
+        <custom-row false if="bigSocialIconType eq 'rdcol'" align="center" class="links-color socialLinks mobile-textcenter">
+          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,if,false if,false if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/csantjaume,http://twitter.com/CentreSantJaume,https://www.fundaciocarlesblanch.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/centresantjaume,https://vimeo.com/,https://www.instagram.com/,https://www.youtube.com/channel/FCBCSJ">
+            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-rdcol-96.png" alt="{{name}}"></social-icon>
+          </repeater>
+        </custom-row>
+        <custom-row false if="bigSocialIconType eq 'rdw'" align="center" class="links-color socialLinks mobile-textcenter">
+          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,if,false if,false if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/csantjaume,http://twitter.com/CentreSantJaume,https://www.fundaciocarlesblanch.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/centresantjaume,https://vimeo.com/,https://www.instagram.com/,https://www.youtube.com/channel/FCBCSJ">
+            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-rdw-96.png" alt="{{name}}"></social-icon>
+          </repeater>
+        </custom-row>
+        <custom-row false if="bigSocialIconType eq 'white'" align="center" class="links-color socialLinks mobile-textcenter">
+          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,if,false if,false if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/csantjaume,http://twitter.com/CentreSantJaume,https://www.fundaciocarlesblanch.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/centresantjaume,https://vimeo.com/,https://www.instagram.com/,https://www.youtube.com/channel/FCBCSJ">
+            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-white-96.png" alt="{{name}}"></social-icon>
+          </repeater>
+        </custom-row>
+      </block-inner>
+    </block>
+
+    <block name="shareBlock" label="Share Block">
+      <block-inner false if="shareButtonType eq 'reverse'" inner-padding="9" inner-class="vb-row">
+        <columns autowidth="1">
+          <repeater prefix="fb,tw,in,pi" default="if,if,false if,false if" name="Facebook,Twitter,LinkedIn,Pinterest" color="#3b5998,#4099FF,#007bb6,#C92228" shareurl="http://www.facebook.com/sharer/sharer.php?u=,http://twitter.com/share?url=,http://www.linkedin.com/shareArticle?url=,http://pinterest.com/pin/find/?url=">
+            <column-content {{default}}="{{prefix}}Visible" spacing="9" align="center">
+              <share-btn href="{{shareurl}}%5Bpermlink_urlenc%5D" color="#FFFFFF" bgcolor="{{color}}" icon-src="img/icons/{{prefix}}-white-96.png" btn-style="shareButtonStyle" editable="{{prefix}}Text">Comparteix</btn>
+            </column-content>
+          </repeater>
+        </columns>
+      </block-inner>
+      <block-inner false if="shareButtonType eq 'simple'" inner-padding="9" inner-class="vb-row">
+        <columns autowidth="1">
+          <repeater prefix="fb,tw,in,pi" default="if,if,false if,false if" name="Facebook,Twitter,LinkedIn,Pinterest" shareurl="http://www.facebook.com/sharer/sharer.php?u=,http://twitter.com/share?url=,http://www.linkedin.com/shareArticle?url=,http://pinterest.com/pin/find/?url=">
+            <column-content {{default}}="{{prefix}}Visible" spacing="9" align="center">
+              <share-btn href="{{shareurl}}%5Bpermlink_urlenc%5D" color="#000000" bgcolor="#FFFFFF" icon-src="img/icons/{{prefix}}-coloured-96.png" font-style="shareButtonStyle" editable="{{prefix}}Text">Comparteix</btn>
+            </column-content>
+          </repeater>
+        </columns>
+      </block-inner>
+      <block-inner if="shareButtonType eq 'custom'" inner-padding="9" inner-class="vb-row">
+        <columns autowidth="1">
+          <repeater prefix="fb,tw,in,pi" default="if,if,false if,false if" name="Facebook,Twitter,LinkedIn,Pinterest" shareurl="http://www.facebook.com/sharer/sharer.php?u=,http://twitter.com/share?url=,http://www.linkedin.com/shareArticle?url=,http://pinterest.com/pin/find/?url=">
+            <column-content false {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'brand'" spacing="9" align="center">
+              <share-btn href="{{shareurl}}%5Bpermlink_urlenc%5D" icon-src="img/icons/{{prefix}}-coloured-96.png" editable="{{prefix}}Text" custom-style="shareButtonStyle">Comparteix</btn>
+            </column-content>
+            <column-content true {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'white'" spacing="9" align="center">
+              <share-btn href="{{shareurl}}%5Bpermlink_urlenc%5D" icon-src="img/icons/{{prefix}}-white-96.png" editable="{{prefix}}Text" custom-style="shareButtonStyle">Comparteix</btn>
+            </column-content>
+            <column-content false {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'black'" spacing="9" align="center">
+              <share-btn href="{{shareurl}}%5Bpermlink_urlenc%5D" icon-src="img/icons/{{prefix}}-black-96.png" editable="{{prefix}}Text" custom-style="shareButtonStyle">Comparteix</btn>
+            </column-content>
+          </repeater>
+        </columns>
+      </block-inner>
+    </block>
+
+    <block height="24" height-prop="spacerSize" td-styles="font-size:1px; height: 1px" name="spacerBlock" label="Spacer Block">
+      <block-inner false if="externalBackgroundVisible eq false" inner-class="vb-container">
+        <spacer height="24" height-prop="spacerSize"></spacer>
+      </block-inner>
+      <div data-ko-display="externalBackgroundVisible" data-ko-wrap="false">&nbsp;</div>
+    </block>
+
+  </div>
+
+  <block name="socialBlock" label="Peu - Adreça, contacte i xarxes socials" theme="frameTheme">
+    <block-inner inner-padding="9" inner-class="vb-row">
+      <columns><!--
+        --><column-content width="276" spacing="9">
+          <non-editable-text align="left">
+            <strong>Centre Sant Jaume - Fundació Carles Blanch</strong><br>
+            {domain.address}<br>
+            <a href="https://www.fundaciocarlesblanch.org">www.fundaciocarlesblanch.org</a>
+          </non-editable-text>
+        </column-content><!--
+        --><column-content width="276" spacing="9">
+          <custom-row false if="socialIconType eq 'colors'" align="right" class="links-color socialLinks mobile-textcenter">
+            <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,if,false if,false if,if"
+            socialurl="http://www.facebook.com/csantjaume,http://twitter.com/CentreSantJaume,https://www.fundaciocarlesblanch.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/centresantjaume,https://vimeo.com/,https://www.instagram.com/,https://www.youtube.com/channel/FCBCSJ" color="#3b5998,#4099FF,#606060,#007bb6,#C92228,#ff0084,#45bbff,#bc2a8d,#cd201f" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube">
+              <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" color="{{color}}" src="img/icons/{{prefix}}-colors-96.png" alt="{{name}}"></social-icon>
+            </repeater>
+          </custom-row>
+          <custom-row false if="socialIconType eq 'bw'" align="right" class="links-color socialLinks mobile-textcenter">
+            <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,if,false if,false if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+            socialurl="http://www.facebook.com/csantjaume,http://twitter.com/CentreSantJaume,https://www.fundaciocarlesblanch.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/centresantjaume,https://vimeo.com/,https://www.instagram.com/,https://www.youtube.com/channel/FCBCSJ">
+              <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" color="#818181" src="img/icons/{{prefix}}-bw-96.png" alt="{{name}}"></social-icon>
+            </repeater>
+          </custom-row>
+          <custom-row if="socialIconType eq 'rdw'" align="right" class="links-color socialLinks mobile-textcenter">
+            <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,if,false if,false if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+            socialurl="http://www.facebook.com/csantjaume,http://twitter.com/CentreSantJaume,https://www.fundaciocarlesblanch.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/centresantjaume,https://vimeo.com/,https://www.instagram.com/,https://www.youtube.com/channel/FCBCSJ">
+              <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" src="img/icons/{{prefix}}-rdw-96.png" alt="{{name}}"></social-icon>
+            </repeater>
+          </custom-row>
+        </column-content><!--
+      --></columns>
+    </block-inner>
+  </block>
+
+  <block name="footerBlock" label="Peu - Enllaços i avís legal" theme="frameTheme">
+    <block-inner inner-padding="0" inner-class="vb-row">
+      <content spacing="9" width="552" class="links-color" td-styles="padding: 0 9px" text-align="center">
+        <non-editable-text align="center">
+          <span data-ko-display="enviamentPublic"><a href="[unsubscribe_link]">Cancel·lar subscripció</a> ·</span>
+          <a href="//{action.optOutUrl}">Baixa</a> ·
+          <a href="https://www.fundaciocarlesblanch.org/avis-legal">Política de privacitat</a>
+        </non-editable-text>
+      </content>
+      <non-editable-text size="10px">
+        <br><br>
+      </non-editable-text>
+    </block-inner>
+  </block>
+</center></body></html>
