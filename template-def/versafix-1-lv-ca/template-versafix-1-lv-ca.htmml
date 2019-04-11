@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
-  <title style="-ko-bind-text: @titleText">TITLE</title>
+  <title style="-ko-bind-text: @titleText">[subject]</title>
   <style type="text/css">
     @supports -ko-blockdefs {
       id { widget: id }
@@ -1137,10 +1137,10 @@
             <column-content false {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'brand'" spacing="9" align="center">
               <share-btn href="{{shareurl}}%5Bpermlink_urlenc%5D" icon-src="img/icons/{{prefix}}-coloured-96.png" editable="{{prefix}}Text" custom-style="shareButtonStyle">Comparteix</btn>
             </column-content>
-            <column-content false {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'white'" spacing="9" align="center">
+            <column-content true {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'white'" spacing="9" align="center">
               <share-btn href="{{shareurl}}%5Bpermlink_urlenc%5D" icon-src="img/icons/{{prefix}}-white-96.png" editable="{{prefix}}Text" custom-style="shareButtonStyle">Comparteix</btn>
             </column-content>
-            <column-content true {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'black'" spacing="9" align="center">
+            <column-content false {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'black'" spacing="9" align="center">
               <share-btn href="{{shareurl}}%5Bpermlink_urlenc%5D" icon-src="img/icons/{{prefix}}-black-96.png" editable="{{prefix}}Text" custom-style="shareButtonStyle">Comparteix</btn>
             </column-content>
           </repeater>
