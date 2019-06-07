@@ -851,7 +851,7 @@
             <text false if="preheaderLinkOption eq 'visible'" content="preheaderText"></text>
           </column-content><!--
           --><column-content width="276" spacing="9" class="mobile-hide">
-            <non-editable-text align="right">Si no veus bé aquest correu fés clic <a href="[show_link]">aquí</a></non-editable-text>
+            <non-editable-text align="right">Si no veus bé aquest correu fes clic <a href="[show_link]">aquí</a></non-editable-text>
           </column-content><!--
         --></columns>
       </block-inner>
