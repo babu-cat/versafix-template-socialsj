@@ -112,7 +112,7 @@
       frameTheme:preview { -ko-background-color: @[backgroundColor] }
       template preheaderText { label: Precapçalera; }
 
-      template { label: Pàgina; theme: frameTheme; properties: preheaderVisible=true; version: 1.1.18; }
+      template { label: Pàgina; theme: frameTheme; properties: preheaderVisible=true; version: 1.1.19; }
 
       footerBlock {
         label: Peu - Enllaços i avís legal;
@@ -127,6 +127,8 @@
       flVisible { label: Flickr; extend: visible }
       viVisible { label: Vimeo; extend: visible }
       webVisible { label: Website; extend: visible }
+      waVisible { label: Whatsapp; extend: visible }
+      tgVisible { label: Telegram; extend: visible }
       instVisible { label: Instagram; extend: visible }
       youVisible { label: YouTube; extend: visible }
       fbUrl { label: Facebook Link; extend: url }
@@ -136,19 +138,21 @@
       flUrl { label: Flickr Link; extend: url}
       viUrl { label: Vimeo Link; extend: url}
       webUrl { label: Website Link; extend: url}
+      waUrl { label: Whatsapp Link; extend: url}
+      tgUrl { label: Telegram Link; extend: url}
       instUrl { label: Instagram Link; extend: url}
       youUrl { label: YouTube Link; extend: url}
 
       socialBlock {
         label: Peu - Adreça, contacte i xarxes socials;
-        properties: socialIconType=rdw fbVisible=true fbUrl twVisible=true twUrl webVisible=true webUrl inVisible=false inUrl piVisible=false piUrl flVisible=false flUrl viVisible=false viUrl instVisible=true instUrl youVisible=true youUrl longTextStyle longText backgroundColor;
+        properties: socialIconType=rdw fbVisible=true fbUrl twVisible=true twUrl webVisible=true webUrl waVisible=false waUrl  tgVisible=false tgUrl inVisible=false inUrl piVisible=false piUrl flVisible=false flUrl viVisible=false viUrl instVisible=true instUrl youVisible=true youUrl longTextStyle longText backgroundColor;
         variant:socialIconType;
         theme: frameTheme
       }
 
       bigSocialBlock {
         label: Bloc social;
-        properties: bigSocialIconType=rdbrandcol bigSocialIconSize=48 fbVisible=true fbUrl twVisible=true twUrl webVisible=true webUrl inVisible=false inUrl piVisible=false piUrl flVisible=false flUrl viVisible=false viUrl instVisible=true instUrl youVisible=true youUrl longTextStyle longText;
+        properties: bigSocialIconType=rdbrandcol bigSocialIconSize=48 fbVisible=true fbUrl twVisible=true twUrl webVisible=true webUrl waVisible=false waUrl tgVisible=false tgUrl inVisible=false inUrl piVisible=false piUrl flVisible=false flUrl viVisible=false viUrl instVisible=true instUrl youVisible=true youUrl longTextStyle longText;
         variant: bigSocialIconType;
         theme: contentTheme
       }
@@ -760,11 +764,11 @@
 
     <!-- use multiple backgroun declaration so clients not supporting border-radius won't show the background too -->
     <!-- we used to use url() with no content, but this made some sub-request on web versions/web clients: https://github.com/voidlabs/versafix-template/issues/5 -->
-    <def attr="color" selector="img" style="background: url(https://), {{color}}"></def>
-    <def attr="color-prop" selector="img" style="-ko-background: @['url(https://), '+{{color-prop}}]"></def>"
+    <def attr="color" selector="a" style="background: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7), {{color}}"></def>
+    <def attr="color-prop" selector="a" style="-ko-background: @['url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7), '+{{color-prop}}]"></def>"
     <def attr="size" selector="img" width="{{size}}" height="{{size}}"></def>
     <def attr="size-prop" selector="img" style="-ko-attr-width: @[{{size-prop}}]; -ko-attr-height: @[{{size-prop}}]"></def>
-    <def attr="radius" selector="img" style="border-radius: {{radius}}px"></def>
+    <def attr="radius" selector="a" style="border-radius: {{radius}}px"></def>
     <def attr="alt" selector="img" alt="{{alt}}"></def>
     <def attr="href-prop" selector="a" style="-ko-attr-href: @[{{href-prop}}]"></def>
     <def attr="href" selector="a" href="{{href}}"></def>
@@ -832,13 +836,18 @@
     </block>
 -->
 
+  <!-- Note:
+    the conditional comment around the body tag (and /body) is to hide the whole tag to windows 10 mail to prevent really weird bugs with windows 10 mail.
+    the conditional comment also remove the tag from Outlook 2016 and following versions, as they share the same version of windows 10 mail.
+  -->
 
   </template-def>
 </head>
+<!--[if !(gte mso 16)]-->
 <body bgcolor="#3f3f3f" size=16px; text="#919191" alink="#000000" vlink="#000000" style="background-color: #3f3f3f; color: #919191;
   -ko-background-color: @_theme_.frameTheme.backgroundColor; -ko-attr-bgcolor: @_theme_.frameTheme.backgroundColor; -ko-color: @_theme_.frameTheme.longTextStyle.color;
   -ko-attr-text: @_theme_.frameTheme.longTextStyle.color; -ko-attr-alink: @_theme_.frameTheme.longTextStyle.linksColor;
-  -ko-attr-vlink: @_theme_.frameTheme.longTextStyle.linksColor"><center>
+  -ko-attr-vlink: @_theme_.frameTheme.longTextStyle.linksColor"><!--<![endif]--><center>
 
   <div data-ko-display="preheaderVisible" data-ko-wrap="false">
 
@@ -1044,68 +1053,68 @@
     <block name="bigSocialBlock" label="Bloc social">
       <block-inner inner-padding="18" inner-class="vb-container links-color socialLinks mobile-textcenter">
         <custom-row false if="bigSocialIconType eq 'black'" align="center" class="links-color socialLinks mobile-textcenter">
-          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
-          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
+          <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
             <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-black-96.png" alt="{{name}}"></social-icon>
           </repeater>
         </custom-row>
         <custom-row false if="bigSocialIconType eq 'bw'" align="center" class="links-color socialLinks mobile-textcenter">
-          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
-          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
+          <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
             <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" color="#818181" src="img/icons/{{prefix}}-bw-96.png" alt="{{name}}"></social-icon>
           </repeater>
         </custom-row>
         <custom-row false if="bigSocialIconType eq 'colors'" align="center" class="links-color socialLinks mobile-textcenter">
-          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,if,if" color="#3b5998,#4099FF,#606060,#007bb6,#C92228,#ff0084,#45bbff,#bc2a8d,#cd201f" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
-          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
+          <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" color="#3b5998,#4099FF,#606060,#25d366,#2da5e1,#007bb6,#C92228,#ff0084,#45bbff,#bc2a8d,#cd201f" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
             <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" color="{{color}}" src="img/icons/{{prefix}}-colors-96.png" alt="{{name}}"></social-icon>
           </repeater>
         </custom-row>
         <custom-row false if="bigSocialIconType eq 'colorsbrand'" align="center" class="links-color socialLinks mobile-textcenter">
-          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
-          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
+          <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
             <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" color="#FFED00" src="img/icons/{{prefix}}-colorsbrand-96.png" alt="{{name}}"></social-icon>
           </repeater>
         </custom-row>
         <custom-row false if="bigSocialIconType eq 'coloured'" align="center" class="links-color socialLinks mobile-textcenter">
-          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
-          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
+          <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
             <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-coloured-96.png" alt="{{name}}"></social-icon>
           </repeater>
         </custom-row>
         <custom-row false if="bigSocialIconType eq 'colouredbrand'" align="center" class="links-color socialLinks mobile-textcenter">
-          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
-          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
+          <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
             <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-colouredbrand-96.png" alt="{{name}}"></social-icon>
           </repeater>
         </custom-row>
         <custom-row false if="bigSocialIconType eq 'rdbl'" align="center" class="links-color socialLinks mobile-textcenter">
-          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
-          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
+          <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
             <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-rdbl-96.png" alt="{{name}}"></social-icon>
           </repeater>
         </custom-row>
         <custom-row if="bigSocialIconType eq 'rdbrandcol'" align="center" class="links-color socialLinks mobile-textcenter">
-          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
-          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
+          <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
             <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-rdbrandcol-96.png" alt="{{name}}"></social-icon>
           </repeater>
         </custom-row>
         <custom-row false if="bigSocialIconType eq 'rdcol'" align="center" class="links-color socialLinks mobile-textcenter">
-          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
-          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
+          <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
             <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-rdcol-96.png" alt="{{name}}"></social-icon>
           </repeater>
         </custom-row>
         <custom-row false if="bigSocialIconType eq 'rdw'" align="center" class="links-color socialLinks mobile-textcenter">
-          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
-          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
+          <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
             <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-rdw-96.png" alt="{{name}}"></social-icon>
           </repeater>
         </custom-row>
         <custom-row false if="bigSocialIconType eq 'white'" align="center" class="links-color socialLinks mobile-textcenter">
-          <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
-          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
+          <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+          socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
             <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" src="img/icons/{{prefix}}-white-96.png" alt="{{name}}"></social-icon>
           </repeater>
         </custom-row>
@@ -1169,20 +1178,20 @@
         </column-content><!--
         --><column-content width="276" spacing="9">
           <custom-row false if="socialIconType eq 'colors'" align="right" class="links-color socialLinks mobile-textcenter">
-            <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,if,if"
-            socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA" color="#3b5998,#4099FF,#606060,#007bb6,#C92228,#ff0084,#45bbff,#bc2a8d,#cd201f" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube">
+            <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if"
+            socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA" color="#3b5998,#4099FF,#606060,#25d366,#2da5e1,#007bb6,#C92228,#ff0084,#45bbff,#bc2a8d,#cd201f" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube">
               <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" color="{{color}}" src="img/icons/{{prefix}}-colors-96.png" alt="{{name}}"></social-icon>
             </repeater>
           </custom-row>
           <custom-row false if="socialIconType eq 'bw'" align="right" class="links-color socialLinks mobile-textcenter">
-            <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
-            socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
+            <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+            socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
               <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" color="#818181" src="img/icons/{{prefix}}-bw-96.png" alt="{{name}}"></social-icon>
             </repeater>
           </custom-row>
           <custom-row if="socialIconType eq 'rdw'" align="right" class="links-color socialLinks mobile-textcenter">
-            <repeater prefix="fb,tw,web,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
-            socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
+            <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
+            socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
               <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" src="img/icons/{{prefix}}-rdw-96.png" alt="{{name}}"></social-icon>
             </repeater>
           </custom-row>
@@ -1205,4 +1214,4 @@
       </non-editable-text>
     </block-inner>
   </block>
-</center></body></html>
+</center><!--[if !(gte mso 16)]--></body><!--<![endif]--></html>
