@@ -41,6 +41,13 @@ var templates = [
 	'destImgDir': './dist/versafix-1-ms-ca/img/',
 	'modelPrefix': './model/versafix-1-ms-ca'
 },
+{
+	'htmml': './template-def/versafix-1-ms-es/template-versafix-1-ms-es.htmml',
+	'html': './dist/versafix-1-ms-es/template-versafix-1-ms-es.html',
+	'imgDir': './template-def/versafix-1-ms-es/img/',
+	'destImgDir': './dist/versafix-1-ms-es/img/',
+	'modelPrefix': './model/versafix-1-ms-es'
+},
 ];
 
 for (var i = 0; i < templates.length; i++) {
