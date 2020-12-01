@@ -1205,7 +1205,7 @@
       <content spacing="9" width="552" class="links-color" td-styles="padding: 0 9px" text-align="center">
         <non-editable-text align="center">
           <span data-ko-display="enviamentPublic"><a href="[unsubscribe_link]">Cancel·lar subscripció</a> ·</span>
-          <a href="//{action.optOutUrl}">Baixa</a> ·
+          <a href="{action.optOutUrl}">Baixa</a> ·
           <a href="https://www.fundaciolavinya.org/avis-legal">Política de privacitat</a>
         </non-editable-text>
       </content>
