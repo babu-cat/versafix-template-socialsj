@@ -69,7 +69,7 @@
       linkStyle:preview { -ko-bind-text: @['Link']; -ko-font-size: @[size]px; -ko-font-family: @face; -ko-color: @color; -ko-text-decoration: @[decoration] }
       longTextStyle { label: Paràgraf; properties: face color size lineHeight align linksColor   }
       longTextStyle:preview { -ko-bind-text: @['AaZz']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; }
-      longTextFooterStyle { label: Paràgraf; properties: face color size lineHeight align linksColor   }
+      longTextFooterStyle { label: Peu; properties: color linksColor }
       bigButtonStyle { label: Botó gran; extend: buttonStyle }
       titleTextStyle { label: Títol; extend: textStyle }
       /* background */
@@ -117,6 +117,10 @@
       footerBlock {
         label: Peu - Enllaços i avís legal;
         properties: enviamentPublic=true;
+        theme: frameTheme
+      }
+      footerBlockLegal {
+        label: Peu - Avís legal;
         theme: frameTheme
       }
 
@@ -234,6 +238,7 @@
       tripleArticleBlock:preview,
       titleBlock:preview,
       footerBlock:preview,
+      footerBlockLegal:preview,
       socialBlock:preview,
       buttonBlock:preview,
       titleBlock:preview { -ko-background-color: @[backgroundColor] }
@@ -301,45 +306,45 @@
     [data-ko-block=tripleArticleBlock] .links-color a:link,
     [data-ko-block=tripleArticleBlock] .links-color a:visited,
     [data-ko-block=tripleArticleBlock] .links-color a:hover {
-      color: #000000;
+      color:#000000;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration: underline;
+      text-decoration:underline;
     }
 
     [data-ko-block=doubleArticleBlock] .links-color a,
     [data-ko-block=doubleArticleBlock] .links-color a:link,
     [data-ko-block=doubleArticleBlock] .links-color a:visited,
     [data-ko-block=doubleArticleBlock] .links-color a:hover {
-      color: #000000;
+      color:#000000;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration: underline;
+      text-decoration:underline;
     }
 
     [data-ko-block=singleArticleBlock] .links-color a,
     [data-ko-block=singleArticleBlock] .links-color a:link,
     [data-ko-block=singleArticleBlock] .links-color a:visited,
     [data-ko-block=singleArticleBlock] .links-color a:hover {
-      color: #000000;
+      color:#000000;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration: underline;
+      text-decoration:underline;
     }
 
     [data-ko-block=textBlock] .links-color a,
     [data-ko-block=textBlock] .links-color a:link,
     [data-ko-block=textBlock] .links-color a:visited,
     [data-ko-block=textBlock] .links-color a:hover {
-      color: #000000;
+      color:#000000;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration: underline;
+      text-decoration:underline;
     }
 
     [data-ko-block=sideArticleBlock] .links-color a,
     [data-ko-block=sideArticleBlock] .links-color a:link,
     [data-ko-block=sideArticleBlock] .links-color a:visited,
     [data-ko-block=sideArticleBlock] .links-color a:hover {
-      color: #000000;
+      color:#000000;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration: underline;
+      text-decoration:underline;
     }
 
     [data-ko-block=socialBlock] .links-color a,
@@ -349,6 +354,14 @@
       color: #ffffff;
       -ko-color: @longTextFooterStyle.linksColor;
       text-decoration: none;
+    }
+
+    [data-ko-block=footerBlockLegal] .legal-text a,
+    [data-ko-block=footerBlockLegal] .legal-text a:link,
+    [data-ko-block=footerBlockLegal] .legal-text a:visited,
+    [data-ko-block=footerBlockLegal] .legal-text a:hover {
+      color: #919191;
+      text-decoration: underline;
     }
 
     [data-ko-block=footerBlock] .links-color a,
@@ -364,7 +377,7 @@
     [data-ko-block=doubleImageBlock] a:link,
     [data-ko-block=doubleImageBlock] a:visited,
     [data-ko-block=doubleImageBlock] a:hover {
-      color: #000000;
+      color:#000000;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
@@ -372,7 +385,7 @@
     [data-ko-block=tripleImageBlock] a:link,
     [data-ko-block=tripleImageBlock] a:visited,
     [data-ko-block=tripleImageBlock] a:hover {
-      color: #000000;
+      color:#000000;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
@@ -380,7 +393,7 @@
     [data-ko-block=imageBlock] a:link,
     [data-ko-block=imageBlock] a:visited,
     [data-ko-block=imageBlock] a:hover {
-      color: #000000;
+      color:#000000;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
@@ -1449,166 +1462,66 @@
       <td align="center" valign="top" style="font-size: 0"><div style="width:100%"><!--[if (gte mso 9)|(lte ie 8)]><table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0"><tr><![endif]--><!--
         -->
           
-            <div data-ko-wrap="false" style="display:inline-block; display: none" class="mobile-full" data-ko-display="fbVisible and shareButtonStyle.iconColorType eq 'brand'"><!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" data-ko-display="fbVisible and shareButtonStyle.iconColorType eq 'brand'" style="display: none"><![endif]--><!--
-      --><div style="display:inline-block; vertical-align:top" class="mobile-full"><!--
-        --><table role="presentation" class="vb-content" border="0" cellspacing="9" cellpadding="0" style="border-collapse: separate; mso-cellspacing: 9px; border-spacing: 9px; -yandex-p: calc(2px - 3%)" align="center">
-          
+            <column-contentfalse if="fbVisible and shareButtonStyle.iconColorType eq 'brand'" spacing="9" align="center">
               <tr>
       <td valign="top" style="line-height: 24px;"><table role="presentation" cellpadding="0" border="0" align="center" cellspacing="6" style="border-spacing: 0; mso-cellspacing: 6px; border-collapse: separate; border-spacing: 6px; background-color: #FFED00; border-radius: 4px; -ko-attr-bgcolor: @shareButtonStyle.buttonColor; -ko-background-color: @shareButtonStyle.buttonColor; -ko-border-radius: @[shareButtonStyle.radius]px;" bgcolor="#FFED00"><tr>
         <td class="shareIcon" valign="middle" style="font-weight: normal; padding-left: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;" width="24"><a href="http://www.facebook.com/sharer/sharer.php?u=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><img style="display: block" src="img/icons/fb-coloured-96.png" alt="Facebook" width="24" height="24"></a></td>
         <td width="auto" valign="middle" style="font-weight: normal; padding-right: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;"><a href="http://www.facebook.com/sharer/sharer.php?u=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><span data-ko-wrap="false" data-ko-editable="fbText">Comparte
-            </span></a></td>
+            
+            <column-contentfalse if="fbVisible and shareButtonStyle.iconColorType eq 'white'" spacing="9" align="center">
+              <share-btn href="http://www.facebook.com/sharer/sharer.php?u=%5Bpermlink_urlenc%5D" icon-src="img/icons/fb-white-96.png" editable="fbText" custom-style="shareButtonStyle" inner-addhpadding="4px" icon-size="24" icon-alt="Facebook" inner-padding="6" bgcolor="#FFED00" radius="4" face="Arial, Helvetica, sans-serif" color="#000000" size="13px">Comparte
+            
+            <column-contenttrue if="fbVisible and shareButtonStyle.iconColorType eq 'black'" spacing="9" align="center">
+              <share-btn href="http://www.facebook.com/sharer/sharer.php?u=%5Bpermlink_urlenc%5D" icon-src="img/icons/fb-black-96.png" editable="fbText" custom-style="shareButtonStyle" inner-addhpadding="4px" icon-size="24" icon-alt="Facebook" inner-padding="6" bgcolor="#FFED00" radius="4" face="Arial, Helvetica, sans-serif" color="#000000" size="13px">Comparte
+            
+          </share-btn></column-contenttrue></share-btn></column-contentfalse></span></a></td>
       </tr></table></td>
-    </tr>
-        </table><!--
-      --></div><!--[if (gte mso 9)|(lte ie 8)]></td><![endif]--></div>
-            <div data-ko-wrap="false" style="display:inline-block; display: none" class="mobile-full" data-ko-display="fbVisible and shareButtonStyle.iconColorType eq 'white'"><!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" data-ko-display="fbVisible and shareButtonStyle.iconColorType eq 'white'" style="display: none"><![endif]--><!--
-      --><div style="display:inline-block; vertical-align:top" class="mobile-full"><!--
-        --><table role="presentation" class="vb-content" border="0" cellspacing="9" cellpadding="0" style="border-collapse: separate; mso-cellspacing: 9px; border-spacing: 9px; -yandex-p: calc(2px - 3%)" align="center">
-          
-              <tr>
-      <td valign="top" style="line-height: 24px;"><table role="presentation" cellpadding="0" border="0" align="center" cellspacing="6" style="border-spacing: 0; mso-cellspacing: 6px; border-collapse: separate; border-spacing: 6px; background-color: #FFED00; border-radius: 4px; -ko-attr-bgcolor: @shareButtonStyle.buttonColor; -ko-background-color: @shareButtonStyle.buttonColor; -ko-border-radius: @[shareButtonStyle.radius]px;" bgcolor="#FFED00"><tr>
-        <td class="shareIcon" valign="middle" style="font-weight: normal; padding-left: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;" width="24"><a href="http://www.facebook.com/sharer/sharer.php?u=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><img style="display: block" src="img/icons/fb-white-96.png" alt="Facebook" width="24" height="24"></a></td>
-        <td width="auto" valign="middle" style="font-weight: normal; padding-right: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;"><a href="http://www.facebook.com/sharer/sharer.php?u=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><span data-ko-wrap="false" data-ko-editable="fbText">Comparte
-            </span></a></td>
-      </tr></table></td>
-    </tr>
-        </table><!--
-      --></div><!--[if (gte mso 9)|(lte ie 8)]></td><![endif]--></div>
-            <div data-ko-wrap="false" style="display:inline-block" class="mobile-full" data-ko-display="fbVisible and shareButtonStyle.iconColorType eq 'black'"><!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" data-ko-display="fbVisible and shareButtonStyle.iconColorType eq 'black'"><![endif]--><!--
-      --><div style="display:inline-block; vertical-align:top" class="mobile-full"><!--
-        --><table role="presentation" class="vb-content" border="0" cellspacing="9" cellpadding="0" style="border-collapse: separate; mso-cellspacing: 9px; border-spacing: 9px; -yandex-p: calc(2px - 3%)" align="center">
-          
-              <tr>
-      <td valign="top" style="line-height: 24px;"><table role="presentation" cellpadding="0" border="0" align="center" cellspacing="6" style="border-spacing: 0; mso-cellspacing: 6px; border-collapse: separate; border-spacing: 6px; background-color: #FFED00; border-radius: 4px; -ko-attr-bgcolor: @shareButtonStyle.buttonColor; -ko-background-color: @shareButtonStyle.buttonColor; -ko-border-radius: @[shareButtonStyle.radius]px;" bgcolor="#FFED00"><tr>
-        <td class="shareIcon" valign="middle" style="font-weight: normal; padding-left: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;" width="24"><a href="http://www.facebook.com/sharer/sharer.php?u=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><img style="display: block" src="img/icons/fb-black-96.png" alt="Facebook" width="24" height="24"></a></td>
-        <td width="auto" valign="middle" style="font-weight: normal; padding-right: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;"><a href="http://www.facebook.com/sharer/sharer.php?u=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><span data-ko-wrap="false" data-ko-editable="fbText">Comparte
-            </span></a></td>
-      </tr></table></td>
-    </tr>
-        </table><!--
-      --></div><!--[if (gte mso 9)|(lte ie 8)]></td><![endif]--></div>
-          
-            <div data-ko-wrap="false" style="display:inline-block; display: none" class="mobile-full" data-ko-display="twVisible and shareButtonStyle.iconColorType eq 'brand'"><!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" data-ko-display="twVisible and shareButtonStyle.iconColorType eq 'brand'" style="display: none"><![endif]--><!--
-      --><div style="display:inline-block; vertical-align:top" class="mobile-full"><!--
-        --><table role="presentation" class="vb-content" border="0" cellspacing="9" cellpadding="0" style="border-collapse: separate; mso-cellspacing: 9px; border-spacing: 9px; -yandex-p: calc(2px - 3%)" align="center">
-          
+    </tr></column-contentfalse>
+            <column-contentfalse if="twVisible and shareButtonStyle.iconColorType eq 'brand'" spacing="9" align="center">
               <tr>
       <td valign="top" style="line-height: 24px;"><table role="presentation" cellpadding="0" border="0" align="center" cellspacing="6" style="border-spacing: 0; mso-cellspacing: 6px; border-collapse: separate; border-spacing: 6px; background-color: #FFED00; border-radius: 4px; -ko-attr-bgcolor: @shareButtonStyle.buttonColor; -ko-background-color: @shareButtonStyle.buttonColor; -ko-border-radius: @[shareButtonStyle.radius]px;" bgcolor="#FFED00"><tr>
         <td class="shareIcon" valign="middle" style="font-weight: normal; padding-left: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;" width="24"><a href="http://twitter.com/share?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><img style="display: block" src="img/icons/tw-coloured-96.png" alt="Twitter" width="24" height="24"></a></td>
         <td width="auto" valign="middle" style="font-weight: normal; padding-right: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;"><a href="http://twitter.com/share?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><span data-ko-wrap="false" data-ko-editable="twText">Comparte
-            </span></a></td>
+            
+            <column-contentfalse if="twVisible and shareButtonStyle.iconColorType eq 'white'" spacing="9" align="center">
+              <share-btn href="http://twitter.com/share?url=%5Bpermlink_urlenc%5D" icon-src="img/icons/tw-white-96.png" editable="twText" custom-style="shareButtonStyle" inner-addhpadding="4px" icon-size="24" icon-alt="Twitter" inner-padding="6" bgcolor="#FFED00" radius="4" face="Arial, Helvetica, sans-serif" color="#000000" size="13px">Comparte
+            
+            <column-contenttrue if="twVisible and shareButtonStyle.iconColorType eq 'black'" spacing="9" align="center">
+              <share-btn href="http://twitter.com/share?url=%5Bpermlink_urlenc%5D" icon-src="img/icons/tw-black-96.png" editable="twText" custom-style="shareButtonStyle" inner-addhpadding="4px" icon-size="24" icon-alt="Twitter" inner-padding="6" bgcolor="#FFED00" radius="4" face="Arial, Helvetica, sans-serif" color="#000000" size="13px">Comparte
+            
+          </share-btn></column-contenttrue></share-btn></column-contentfalse></span></a></td>
       </tr></table></td>
-    </tr>
-        </table><!--
-      --></div><!--[if (gte mso 9)|(lte ie 8)]></td><![endif]--></div>
-            <div data-ko-wrap="false" style="display:inline-block; display: none" class="mobile-full" data-ko-display="twVisible and shareButtonStyle.iconColorType eq 'white'"><!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" data-ko-display="twVisible and shareButtonStyle.iconColorType eq 'white'" style="display: none"><![endif]--><!--
-      --><div style="display:inline-block; vertical-align:top" class="mobile-full"><!--
-        --><table role="presentation" class="vb-content" border="0" cellspacing="9" cellpadding="0" style="border-collapse: separate; mso-cellspacing: 9px; border-spacing: 9px; -yandex-p: calc(2px - 3%)" align="center">
-          
-              <tr>
-      <td valign="top" style="line-height: 24px;"><table role="presentation" cellpadding="0" border="0" align="center" cellspacing="6" style="border-spacing: 0; mso-cellspacing: 6px; border-collapse: separate; border-spacing: 6px; background-color: #FFED00; border-radius: 4px; -ko-attr-bgcolor: @shareButtonStyle.buttonColor; -ko-background-color: @shareButtonStyle.buttonColor; -ko-border-radius: @[shareButtonStyle.radius]px;" bgcolor="#FFED00"><tr>
-        <td class="shareIcon" valign="middle" style="font-weight: normal; padding-left: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;" width="24"><a href="http://twitter.com/share?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><img style="display: block" src="img/icons/tw-white-96.png" alt="Twitter" width="24" height="24"></a></td>
-        <td width="auto" valign="middle" style="font-weight: normal; padding-right: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;"><a href="http://twitter.com/share?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><span data-ko-wrap="false" data-ko-editable="twText">Comparte
-            </span></a></td>
-      </tr></table></td>
-    </tr>
-        </table><!--
-      --></div><!--[if (gte mso 9)|(lte ie 8)]></td><![endif]--></div>
-            <div data-ko-wrap="false" style="display:inline-block" class="mobile-full" data-ko-display="twVisible and shareButtonStyle.iconColorType eq 'black'"><!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" data-ko-display="twVisible and shareButtonStyle.iconColorType eq 'black'"><![endif]--><!--
-      --><div style="display:inline-block; vertical-align:top" class="mobile-full"><!--
-        --><table role="presentation" class="vb-content" border="0" cellspacing="9" cellpadding="0" style="border-collapse: separate; mso-cellspacing: 9px; border-spacing: 9px; -yandex-p: calc(2px - 3%)" align="center">
-          
-              <tr>
-      <td valign="top" style="line-height: 24px;"><table role="presentation" cellpadding="0" border="0" align="center" cellspacing="6" style="border-spacing: 0; mso-cellspacing: 6px; border-collapse: separate; border-spacing: 6px; background-color: #FFED00; border-radius: 4px; -ko-attr-bgcolor: @shareButtonStyle.buttonColor; -ko-background-color: @shareButtonStyle.buttonColor; -ko-border-radius: @[shareButtonStyle.radius]px;" bgcolor="#FFED00"><tr>
-        <td class="shareIcon" valign="middle" style="font-weight: normal; padding-left: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;" width="24"><a href="http://twitter.com/share?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><img style="display: block" src="img/icons/tw-black-96.png" alt="Twitter" width="24" height="24"></a></td>
-        <td width="auto" valign="middle" style="font-weight: normal; padding-right: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;"><a href="http://twitter.com/share?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><span data-ko-wrap="false" data-ko-editable="twText">Comparte
-            </span></a></td>
-      </tr></table></td>
-    </tr>
-        </table><!--
-      --></div><!--[if (gte mso 9)|(lte ie 8)]></td><![endif]--></div>
-          
-            <div data-ko-wrap="false" style="display:inline-block; display: none" class="mobile-full" data-ko-display="inVisible and shareButtonStyle.iconColorType eq 'brand'"><!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" data-ko-display="inVisible and shareButtonStyle.iconColorType eq 'brand'" style="display: none"><![endif]--><!--
-      --><div style="display:inline-block; vertical-align:top" class="mobile-full"><!--
-        --><table role="presentation" class="vb-content" border="0" cellspacing="9" cellpadding="0" style="border-collapse: separate; mso-cellspacing: 9px; border-spacing: 9px; -yandex-p: calc(2px - 3%)" align="center">
-          
+    </tr></column-contentfalse>
+            <column-contentfalse false="" if="inVisible and shareButtonStyle.iconColorType eq 'brand'" spacing="9" align="center">
               <tr>
       <td valign="top" style="line-height: 24px;"><table role="presentation" cellpadding="0" border="0" align="center" cellspacing="6" style="border-spacing: 0; mso-cellspacing: 6px; border-collapse: separate; border-spacing: 6px; background-color: #FFED00; border-radius: 4px; -ko-attr-bgcolor: @shareButtonStyle.buttonColor; -ko-background-color: @shareButtonStyle.buttonColor; -ko-border-radius: @[shareButtonStyle.radius]px;" bgcolor="#FFED00"><tr>
         <td class="shareIcon" valign="middle" style="font-weight: normal; padding-left: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;" width="24"><a href="http://www.linkedin.com/shareArticle?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><img style="display: block" src="img/icons/in-coloured-96.png" alt="LinkedIn" width="24" height="24"></a></td>
         <td width="auto" valign="middle" style="font-weight: normal; padding-right: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;"><a href="http://www.linkedin.com/shareArticle?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><span data-ko-wrap="false" data-ko-editable="inText">Comparte
-            </span></a></td>
+            
+            <column-contentfalse false="" if="inVisible and shareButtonStyle.iconColorType eq 'white'" spacing="9" align="center">
+              <share-btn href="http://www.linkedin.com/shareArticle?url=%5Bpermlink_urlenc%5D" icon-src="img/icons/in-white-96.png" editable="inText" custom-style="shareButtonStyle" inner-addhpadding="4px" icon-size="24" icon-alt="LinkedIn" inner-padding="6" bgcolor="#FFED00" radius="4" face="Arial, Helvetica, sans-serif" color="#000000" size="13px">Comparte
+            
+            <column-contenttrue false="" if="inVisible and shareButtonStyle.iconColorType eq 'black'" spacing="9" align="center">
+              <share-btn href="http://www.linkedin.com/shareArticle?url=%5Bpermlink_urlenc%5D" icon-src="img/icons/in-black-96.png" editable="inText" custom-style="shareButtonStyle" inner-addhpadding="4px" icon-size="24" icon-alt="LinkedIn" inner-padding="6" bgcolor="#FFED00" radius="4" face="Arial, Helvetica, sans-serif" color="#000000" size="13px">Comparte
+            
+          </share-btn></column-contenttrue></share-btn></column-contentfalse></span></a></td>
       </tr></table></td>
-    </tr>
-        </table><!--
-      --></div><!--[if (gte mso 9)|(lte ie 8)]></td><![endif]--></div>
-            <div data-ko-wrap="false" style="display:inline-block; display: none" class="mobile-full" data-ko-display="inVisible and shareButtonStyle.iconColorType eq 'white'"><!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" data-ko-display="inVisible and shareButtonStyle.iconColorType eq 'white'" style="display: none"><![endif]--><!--
-      --><div style="display:inline-block; vertical-align:top" class="mobile-full"><!--
-        --><table role="presentation" class="vb-content" border="0" cellspacing="9" cellpadding="0" style="border-collapse: separate; mso-cellspacing: 9px; border-spacing: 9px; -yandex-p: calc(2px - 3%)" align="center">
-          
-              <tr>
-      <td valign="top" style="line-height: 24px;"><table role="presentation" cellpadding="0" border="0" align="center" cellspacing="6" style="border-spacing: 0; mso-cellspacing: 6px; border-collapse: separate; border-spacing: 6px; background-color: #FFED00; border-radius: 4px; -ko-attr-bgcolor: @shareButtonStyle.buttonColor; -ko-background-color: @shareButtonStyle.buttonColor; -ko-border-radius: @[shareButtonStyle.radius]px;" bgcolor="#FFED00"><tr>
-        <td class="shareIcon" valign="middle" style="font-weight: normal; padding-left: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;" width="24"><a href="http://www.linkedin.com/shareArticle?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><img style="display: block" src="img/icons/in-white-96.png" alt="LinkedIn" width="24" height="24"></a></td>
-        <td width="auto" valign="middle" style="font-weight: normal; padding-right: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;"><a href="http://www.linkedin.com/shareArticle?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><span data-ko-wrap="false" data-ko-editable="inText">Comparte
-            </span></a></td>
-      </tr></table></td>
-    </tr>
-        </table><!--
-      --></div><!--[if (gte mso 9)|(lte ie 8)]></td><![endif]--></div>
-            <div data-ko-wrap="false" style="display:inline-block; display: none" class="mobile-full" data-ko-display="inVisible and shareButtonStyle.iconColorType eq 'black'"><!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" data-ko-display="inVisible and shareButtonStyle.iconColorType eq 'black'" style="display: none"><![endif]--><!--
-      --><div style="display:inline-block; vertical-align:top" class="mobile-full"><!--
-        --><table role="presentation" class="vb-content" border="0" cellspacing="9" cellpadding="0" style="border-collapse: separate; mso-cellspacing: 9px; border-spacing: 9px; -yandex-p: calc(2px - 3%)" align="center">
-          
-              <tr>
-      <td valign="top" style="line-height: 24px;"><table role="presentation" cellpadding="0" border="0" align="center" cellspacing="6" style="border-spacing: 0; mso-cellspacing: 6px; border-collapse: separate; border-spacing: 6px; background-color: #FFED00; border-radius: 4px; -ko-attr-bgcolor: @shareButtonStyle.buttonColor; -ko-background-color: @shareButtonStyle.buttonColor; -ko-border-radius: @[shareButtonStyle.radius]px;" bgcolor="#FFED00"><tr>
-        <td class="shareIcon" valign="middle" style="font-weight: normal; padding-left: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;" width="24"><a href="http://www.linkedin.com/shareArticle?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><img style="display: block" src="img/icons/in-black-96.png" alt="LinkedIn" width="24" height="24"></a></td>
-        <td width="auto" valign="middle" style="font-weight: normal; padding-right: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;"><a href="http://www.linkedin.com/shareArticle?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><span data-ko-wrap="false" data-ko-editable="inText">Comparte
-            </span></a></td>
-      </tr></table></td>
-    </tr>
-        </table><!--
-      --></div><!--[if (gte mso 9)|(lte ie 8)]></td><![endif]--></div>
-          
-            <div data-ko-wrap="false" style="display:inline-block; display: none" class="mobile-full" data-ko-display="piVisible and shareButtonStyle.iconColorType eq 'brand'"><!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" data-ko-display="piVisible and shareButtonStyle.iconColorType eq 'brand'" style="display: none"><![endif]--><!--
-      --><div style="display:inline-block; vertical-align:top" class="mobile-full"><!--
-        --><table role="presentation" class="vb-content" border="0" cellspacing="9" cellpadding="0" style="border-collapse: separate; mso-cellspacing: 9px; border-spacing: 9px; -yandex-p: calc(2px - 3%)" align="center">
-          
+    </tr></column-contentfalse>
+            <column-contentfalse false="" if="piVisible and shareButtonStyle.iconColorType eq 'brand'" spacing="9" align="center">
               <tr>
       <td valign="top" style="line-height: 24px;"><table role="presentation" cellpadding="0" border="0" align="center" cellspacing="6" style="border-spacing: 0; mso-cellspacing: 6px; border-collapse: separate; border-spacing: 6px; background-color: #FFED00; border-radius: 4px; -ko-attr-bgcolor: @shareButtonStyle.buttonColor; -ko-background-color: @shareButtonStyle.buttonColor; -ko-border-radius: @[shareButtonStyle.radius]px;" bgcolor="#FFED00"><tr>
         <td class="shareIcon" valign="middle" style="font-weight: normal; padding-left: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;" width="24"><a href="http://pinterest.com/pin/find/?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><img style="display: block" src="img/icons/pi-coloured-96.png" alt="Pinterest" width="24" height="24"></a></td>
         <td width="auto" valign="middle" style="font-weight: normal; padding-right: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;"><a href="http://pinterest.com/pin/find/?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><span data-ko-wrap="false" data-ko-editable="piText">Comparte
-            </span></a></td>
+            
+            <column-contentfalse false="" if="piVisible and shareButtonStyle.iconColorType eq 'white'" spacing="9" align="center">
+              <share-btn href="http://pinterest.com/pin/find/?url=%5Bpermlink_urlenc%5D" icon-src="img/icons/pi-white-96.png" editable="piText" custom-style="shareButtonStyle" inner-addhpadding="4px" icon-size="24" icon-alt="Pinterest" inner-padding="6" bgcolor="#FFED00" radius="4" face="Arial, Helvetica, sans-serif" color="#000000" size="13px">Comparte
+            
+            <column-contenttrue false="" if="piVisible and shareButtonStyle.iconColorType eq 'black'" spacing="9" align="center">
+              <share-btn href="http://pinterest.com/pin/find/?url=%5Bpermlink_urlenc%5D" icon-src="img/icons/pi-black-96.png" editable="piText" custom-style="shareButtonStyle" inner-addhpadding="4px" icon-size="24" icon-alt="Pinterest" inner-padding="6" bgcolor="#FFED00" radius="4" face="Arial, Helvetica, sans-serif" color="#000000" size="13px">Comparte
+            
+          </share-btn></column-contenttrue></share-btn></column-contentfalse></span></a></td>
       </tr></table></td>
-    </tr>
-        </table><!--
-      --></div><!--[if (gte mso 9)|(lte ie 8)]></td><![endif]--></div>
-            <div data-ko-wrap="false" style="display:inline-block; display: none" class="mobile-full" data-ko-display="piVisible and shareButtonStyle.iconColorType eq 'white'"><!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" data-ko-display="piVisible and shareButtonStyle.iconColorType eq 'white'" style="display: none"><![endif]--><!--
-      --><div style="display:inline-block; vertical-align:top" class="mobile-full"><!--
-        --><table role="presentation" class="vb-content" border="0" cellspacing="9" cellpadding="0" style="border-collapse: separate; mso-cellspacing: 9px; border-spacing: 9px; -yandex-p: calc(2px - 3%)" align="center">
-          
-              <tr>
-      <td valign="top" style="line-height: 24px;"><table role="presentation" cellpadding="0" border="0" align="center" cellspacing="6" style="border-spacing: 0; mso-cellspacing: 6px; border-collapse: separate; border-spacing: 6px; background-color: #FFED00; border-radius: 4px; -ko-attr-bgcolor: @shareButtonStyle.buttonColor; -ko-background-color: @shareButtonStyle.buttonColor; -ko-border-radius: @[shareButtonStyle.radius]px;" bgcolor="#FFED00"><tr>
-        <td class="shareIcon" valign="middle" style="font-weight: normal; padding-left: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;" width="24"><a href="http://pinterest.com/pin/find/?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><img style="display: block" src="img/icons/pi-white-96.png" alt="Pinterest" width="24" height="24"></a></td>
-        <td width="auto" valign="middle" style="font-weight: normal; padding-right: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;"><a href="http://pinterest.com/pin/find/?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><span data-ko-wrap="false" data-ko-editable="piText">Comparte
-            </span></a></td>
-      </tr></table></td>
-    </tr>
-        </table><!--
-      --></div><!--[if (gte mso 9)|(lte ie 8)]></td><![endif]--></div>
-            <div data-ko-wrap="false" style="display:inline-block; display: none" class="mobile-full" data-ko-display="piVisible and shareButtonStyle.iconColorType eq 'black'"><!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" data-ko-display="piVisible and shareButtonStyle.iconColorType eq 'black'" style="display: none"><![endif]--><!--
-      --><div style="display:inline-block; vertical-align:top" class="mobile-full"><!--
-        --><table role="presentation" class="vb-content" border="0" cellspacing="9" cellpadding="0" style="border-collapse: separate; mso-cellspacing: 9px; border-spacing: 9px; -yandex-p: calc(2px - 3%)" align="center">
-          
-              <tr>
-      <td valign="top" style="line-height: 24px;"><table role="presentation" cellpadding="0" border="0" align="center" cellspacing="6" style="border-spacing: 0; mso-cellspacing: 6px; border-collapse: separate; border-spacing: 6px; background-color: #FFED00; border-radius: 4px; -ko-attr-bgcolor: @shareButtonStyle.buttonColor; -ko-background-color: @shareButtonStyle.buttonColor; -ko-border-radius: @[shareButtonStyle.radius]px;" bgcolor="#FFED00"><tr>
-        <td class="shareIcon" valign="middle" style="font-weight: normal; padding-left: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;" width="24"><a href="http://pinterest.com/pin/find/?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><img style="display: block" src="img/icons/pi-black-96.png" alt="Pinterest" width="24" height="24"></a></td>
-        <td width="auto" valign="middle" style="font-weight: normal; padding-right: 4px; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face; line-height: 24px;"><a href="http://pinterest.com/pin/find/?url=%5Bpermlink_urlenc%5D" style="text-decoration: none; font-weight: normal; color: #000000; font-size: 13px; font-family: Arial, Helvetica, sans-serif; -ko-color: @shareButtonStyle.color; -ko-font-size: @[shareButtonStyle.size]px; -ko-font-family: @shareButtonStyle.face"><span data-ko-wrap="false" data-ko-editable="piText">Comparte
-            </span></a></td>
-      </tr></table></td>
-    </tr>
-        </table><!--
-      --></div><!--[if (gte mso 9)|(lte ie 8)]></td><![endif]--></div>
-          
+    </tr></column-contentfalse>
         <!--
       --><!--[if (gte mso 9)|(lte ie 8)]></tr></table><![endif]--></div></td>
     </tr>
@@ -1656,7 +1569,7 @@
         --><table role="presentation" class="vb-content" border="0" cellspacing="9" cellpadding="0" style="border-collapse: separate; width: 100%; mso-cellspacing: 9px; border-spacing: 9px; -yandex-p: calc(2px - 3%)" width="276" align="left">
           
           <tr>
-      <td width="100%" valign="top" style="font-weight: normal; color: #919191; font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-align: left" class="links-color" align="left"><span style="font-weight: normal">
+      <td width="100%" valign="top" style="font-weight: normal; color: #D1D1D1; font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-align: left" class="links-color" align="left"><span style="font-weight: normal">
             <strong>Fundació Migra Studium</strong><br>
             {domain.address}<br>
             <a href="https://www.migrastudium.org">www.migrastudium.org</a>
@@ -1772,17 +1685,12 @@
         <tr>
       <td width="100%" valign="top" style="font-weight: normal; color: #919191; font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-align: center" class="links-color" align="center"><span style="font-weight: normal">
           <span data-ko-display="enviamentPublic"><a href="[unsubscribe_link]">Cancelar suscripción</a> ·</span>
-          <a href="//{action.optOutUrl}">Baja</a> ·
+          <a href="{action.optOutUrl}">Baja</a> ·
           <a href="https://www.migrastudium.org/es/aviso-legal">Política de privacidad</a>
         </span></td>
     </tr>
       
         </table></div></td>
-    </tr>
-      <tr>
-      <td width="100%" valign="top" style="font-weight: normal; color: #919191; font-size: 10px; font-family: Arial, Helvetica, sans-serif; text-align: left" class="links-color" align="left"><span style="font-weight: normal">
-        <br><br>
-      </span></td>
     </tr>
     
       </table></div><!--
@@ -1790,5 +1698,30 @@
   </td></tr>
     </table>
     <!-- /footerBlock -->
+    
+  
+    <!-- footerBlockLegal -->
+    <table role="presentation" class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#3f3f3f" style="background-color: #3f3f3f; -ko-background-color: @[backgroundColor]; -ko-attr-bgcolor: @[backgroundColor]" data-ko-block="footerBlockLegal">
+      <tr><td class="vb-outer" align="center" valign="top" style="padding-left: 9px; padding-right: 9px; font-size: 0">
+    <!--[if (gte mso 9)|(lte ie 8)]><table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0" width="570"><tr><td align="center" valign="top"><![endif]--><!--
+      --><div style="margin: 0 auto; max-width: 570px; -mru-width: 0px"><table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; width: 100%; mso-cellspacing: 0px; border-spacing: 0px; max-width: 570px; -mru-width: 0px" width="570" class="vb-row">
+        
+      <tr>
+      <td align="center" valign="top" style="font-size: 0; padding: 0 9px"><div style="vertical-align:top; width:100%; max-width: 552px; -mru-width: 0px" class="legal-text"><!--
+        --><table role="presentation" class="vb-content" border="0" cellspacing="9" cellpadding="0" style="border-collapse: separate; width: 100%; mso-cellspacing: 9px; border-spacing: 9px; text-align: center" width="552">
+          
+        <tr>
+      <td width="100%" valign="top" style="font-weight: normal; color: #919191; font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-align: left" class="links-color" align="left"><span style="font-weight: normal">En cumplimiento de la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico y del Reglamento UE 679/2016 de protección de datos, desde la FUNDACIÓ MIGRA STUDIUM te informamos de que disponemos de su dirección de correo electrónico en base a que nos la ha facilitado voluntariamente con la finalidad de mantener nuestra relación y poderte enviar comunicaciones sobre las actividades de nuestra entidad. <br>Te informamos de tu derecho de acceso, rectificación, supresión, portabilidad, limitación u oposición al tratamiento respecto a tus datos, así como a retirar el consentimiento prestado en cualquier momento. Si no deseas seguir recibiendo nuestros correos electrónicos, solo tienes que indicárnoslo enviando un correo electrónico a  <a href="mailto:"></a> o haciendo clic aquí <a href="{action.optOutUrl}"> aquí</a>. Para más información puedes consultar nuestra <a href="">política de privacidad</a>.<br><br>
+        </span></td>
+    </tr>
+      
+        </table></div></td>
+    </tr>
+    
+      </table></div><!--
+    --><!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
+  </td></tr>
+    </table>
+    <!-- /footerBlockLegal -->
     
 </center><!--[if !(gte mso 16)]--></body><!--<![endif]--></html>
