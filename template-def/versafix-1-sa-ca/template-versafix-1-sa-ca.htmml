@@ -69,7 +69,7 @@
       linkStyle:preview { -ko-bind-text: @['Link']; -ko-font-size: @[size]px; -ko-font-family: @face; -ko-color: @color; -ko-text-decoration: @[decoration] }
       longTextStyle { label: Paràgraf; properties: face color size lineHeight align linksColor   }
       longTextStyle:preview { -ko-bind-text: @['AaZz']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; }
-      longTextFooterStyle { label: Paràgraf; properties: face color size lineHeight align linksColor   }
+      longTextFooterStyle { label: Peu; properties: color linksColor }
       bigButtonStyle { label: Botó gran; extend: buttonStyle }
       titleTextStyle { label: Títol; extend: textStyle }
       /* background */
@@ -117,6 +117,10 @@
       footerBlock {
         label: Peu - Enllaços i avís legal;
         properties: enviamentPublic=true;
+        theme: frameTheme
+      }
+      footerBlockLegal {
+        label: Peu - Avís legal;
         theme: frameTheme
       }
 
@@ -234,6 +238,7 @@
       tripleArticleBlock:preview,
       titleBlock:preview,
       footerBlock:preview,
+      footerBlockLegal:preview,
       socialBlock:preview,
       buttonBlock:preview,
       titleBlock:preview { -ko-background-color: @[backgroundColor] }
@@ -301,45 +306,45 @@
     [data-ko-block=tripleArticleBlock] .links-color a:link,
     [data-ko-block=tripleArticleBlock] .links-color a:visited,
     [data-ko-block=tripleArticleBlock] .links-color a:hover {
-      color: #ec7334;
+      color:#ec7334;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration: none;
+      text-decoration:none;
     }
 
     [data-ko-block=doubleArticleBlock] .links-color a,
     [data-ko-block=doubleArticleBlock] .links-color a:link,
     [data-ko-block=doubleArticleBlock] .links-color a:visited,
     [data-ko-block=doubleArticleBlock] .links-color a:hover {
-      color: #ec7334;
+      color:#ec7334;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration: none;
+      text-decoration:none;
     }
 
     [data-ko-block=singleArticleBlock] .links-color a,
     [data-ko-block=singleArticleBlock] .links-color a:link,
     [data-ko-block=singleArticleBlock] .links-color a:visited,
     [data-ko-block=singleArticleBlock] .links-color a:hover {
-      color: #ec7334;
+      color:#ec7334;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration: none;
+      text-decoration:none;
     }
 
     [data-ko-block=textBlock] .links-color a,
     [data-ko-block=textBlock] .links-color a:link,
     [data-ko-block=textBlock] .links-color a:visited,
     [data-ko-block=textBlock] .links-color a:hover {
-      color: #ec7334;
+      color:#ec7334;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration: none;
+      text-decoration:none;
     }
 
     [data-ko-block=sideArticleBlock] .links-color a,
     [data-ko-block=sideArticleBlock] .links-color a:link,
     [data-ko-block=sideArticleBlock] .links-color a:visited,
     [data-ko-block=sideArticleBlock] .links-color a:hover {
-      color: #ec7334;
+      color:#ec7334;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration: none;
+      text-decoration:none;
     }
 
     [data-ko-block=socialBlock] .links-color a,
@@ -349,6 +354,14 @@
       color: #ffffff;
       -ko-color: @longTextFooterStyle.linksColor;
       text-decoration: none;
+    }
+
+    [data-ko-block=footerBlockLegal] .legal-text a,
+    [data-ko-block=footerBlockLegal] .legal-text a:link,
+    [data-ko-block=footerBlockLegal] .legal-text a:visited,
+    [data-ko-block=footerBlockLegal] .legal-text a:hover {
+      color: #919191;
+      text-decoration: underline;
     }
 
     [data-ko-block=footerBlock] .links-color a,
@@ -364,7 +377,7 @@
     [data-ko-block=doubleImageBlock] a:link,
     [data-ko-block=doubleImageBlock] a:visited,
     [data-ko-block=doubleImageBlock] a:hover {
-      color: #ec7334;
+      color:#ec7334;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
@@ -372,7 +385,7 @@
     [data-ko-block=tripleImageBlock] a:link,
     [data-ko-block=tripleImageBlock] a:visited,
     [data-ko-block=tripleImageBlock] a:hover {
-      color: #ec7334;
+      color:#ec7334;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
@@ -380,7 +393,7 @@
     [data-ko-block=imageBlock] a:link,
     [data-ko-block=imageBlock] a:visited,
     [data-ko-block=imageBlock] a:hover {
-      color: #ec7334;
+      color:#ec7334;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
@@ -1143,13 +1156,13 @@
       <block-inner if="shareButtonType eq 'custom'" inner-padding="9" inner-class="vb-row">
         <columns autowidth="1">
           <repeater prefix="fb,tw,in,pi" default="if,if,false if,if" name="Facebook,Twitter,LinkedIn,Pinterest" shareurl="http://www.facebook.com/sharer/sharer.php?u=,http://twitter.com/share?url=,http://www.linkedin.com/shareArticle?url=,http://pinterest.com/pin/find/?url=">
-            <column-content false {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'brand'" spacing="9" align="center">
+            <column-contentfalse {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'brand'" spacing="9" align="center">
               <share-btn href="{{shareurl}}%5Bpermlink_urlenc%5D" icon-src="img/icons/{{prefix}}-coloured-96.png" editable="{{prefix}}Text" custom-style="shareButtonStyle">Comparteix</btn>
             </column-content>
-            <column-content true {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'white'" spacing="9" align="center">
+            <column-contenttrue {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'white'" spacing="9" align="center">
               <share-btn href="{{shareurl}}%5Bpermlink_urlenc%5D" icon-src="img/icons/{{prefix}}-white-96.png" editable="{{prefix}}Text" custom-style="shareButtonStyle">Comparteix</btn>
             </column-content>
-            <column-content false {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'black'" spacing="9" align="center">
+            <column-contentfalse {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'black'" spacing="9" align="center">
               <share-btn href="{{shareurl}}%5Bpermlink_urlenc%5D" icon-src="img/icons/{{prefix}}-black-96.png" editable="{{prefix}}Text" custom-style="shareButtonStyle">Comparteix</btn>
             </column-content>
           </repeater>
@@ -1170,7 +1183,7 @@
     <block-inner inner-padding="9" inner-class="vb-row">
       <columns><!--
         --><column-content width="276" spacing="9">
-          <non-editable-text align="left">
+          <non-editable-text align="left" color="#D1D1D1">
             <strong>Fundació Salut Alta</strong><br>
             {domain.address}<br>
             <a href="https://www.fundaciosalutalta.org">www.fundaciosalutalta.org</a>
@@ -1200,7 +1213,7 @@
     </block-inner>
   </block>
 
-  <block name="footerBlock" label="Peu - Enllaços i avís legal" theme="frameTheme">
+  <block name="footerBlock" label="Peu - Enllaços" theme="frameTheme">
     <block-inner inner-padding="0" inner-class="vb-row">
       <content spacing="9" width="552" class="links-color" td-styles="padding: 0 9px" text-align="center">
         <non-editable-text align="center">
@@ -1209,9 +1222,14 @@
           <a href="https://www.fundaciosalutalta.org/avis-legal">Política de privacitat</a>
         </non-editable-text>
       </content>
-      <non-editable-text size="10px">
-        En compliment de la Llei 34/2002, del 11 de juliol, de serveis de la societat de la informació i de comerç electrònic i de la Llei Orgànica 15/1999 de Protecció de Dades de caràcter personal, us comuniquem que la direcció de correu electrònic que ens heu facilitat voluntàriament, figura en els nostres fitxers (FUNDACIÓ PRIVADA LA SALUT ALTA) amb la finalitat de proporcionar-vos per via electrònica el nostre butlletí electrònic o newsletter. Ens complau informar-vos del vostre dret a oposar-vos, accedir, cancel·lar o modificar les vostres dades. Si no desitjeu seguir rebent els nostres correus electrònics podeu sol·licitar-ho a través de l&#039;enllaç &quot;Cancel·lar subscripció&quot; que apareix més a dalt, o bé si ho preferiu podeu enviar un correu a comunicacio@fundaciolasalutalta.org. El consentiment s&#039;entendrà prestat si no ens comuniqueu la revocació del mateix.<br><br>
-      </non-editable-text>
+    </block-inner>
+  </block>
+  <block name="footerBlockLegal" label="Peu - Avís legal" theme="frameTheme">
+    <block-inner inner-padding="0" inner-class="vb-row">
+      <content spacing="9" width="552" class="legal-text" td-styles="padding: 0 9px" text-align="center">
+        <non-editable-text class="legal-text" color="#919191" size="11px">En compliment de la Llei 34/2002, d&#039;onze de juliol, de serveis de la societat de la informació i de comerç electrònic i del Reglament UE 679/2016 de protecció de dades, des de la FUNDACIÓ SALUT ALTA t&#039;informem que disposem de la teva adreça de correu electrònic en base a que ens l&#039;has facilitada voluntàriament amb la finalitat de mantenir la nostra relació i poder-te enviar comunicacions sobre les activitats de la nostra entitat. <br>T&#039;informem del teu dret d&#039;accés, rectificació, supressió, portabilitat, limitació o oposició al tractament respecte a les teves dades, així com a retirar el consentiment donat en qualsevol moment. Si no desitges seguir rebent els nostres correus electrònics, només ens ho has d&#039;indicar enviant un correu electrònic a  <a href="mailto:dades@fundaciolasalutalta.org">dades@fundaciolasalutalta.org</a> o fent clic <a href='{action.optOutUrl}'> aquí</a>. Per a més informació pots consultar la nostra <a href="https://www.fundaciosalutalta.org/politica-de-privacitat/">política de privacitat</a>.<br><br>
+        </non-editable-text>
+      </content>
     </block-inner>
   </block>
 </center><!--[if !(gte mso 16)]--></body><!--<![endif]--></html>
