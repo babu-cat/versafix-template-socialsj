@@ -119,6 +119,7 @@
         properties: enviamentPublic=true;
         theme: frameTheme
       }
+
       footerBlockLegal {
         label: Peu - Avís legal;
         theme: frameTheme
@@ -306,45 +307,45 @@
     [data-ko-block=tripleArticleBlock] .links-color a:link,
     [data-ko-block=tripleArticleBlock] .links-color a:visited,
     [data-ko-block=tripleArticleBlock] .links-color a:hover {
-      color:#000000;
+      color: #283042;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration:underline;
+      text-decoration: underline;
     }
 
     [data-ko-block=doubleArticleBlock] .links-color a,
     [data-ko-block=doubleArticleBlock] .links-color a:link,
     [data-ko-block=doubleArticleBlock] .links-color a:visited,
     [data-ko-block=doubleArticleBlock] .links-color a:hover {
-      color:#000000;
+      color: #283042;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration:underline;
+      text-decoration: underline;
     }
 
     [data-ko-block=singleArticleBlock] .links-color a,
     [data-ko-block=singleArticleBlock] .links-color a:link,
     [data-ko-block=singleArticleBlock] .links-color a:visited,
     [data-ko-block=singleArticleBlock] .links-color a:hover {
-      color:#000000;
+      color: #283042;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration:underline;
+      text-decoration: underline;
     }
 
     [data-ko-block=textBlock] .links-color a,
     [data-ko-block=textBlock] .links-color a:link,
     [data-ko-block=textBlock] .links-color a:visited,
     [data-ko-block=textBlock] .links-color a:hover {
-      color:#000000;
+      color: #283042;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration:underline;
+      text-decoration: underline;
     }
 
     [data-ko-block=sideArticleBlock] .links-color a,
     [data-ko-block=sideArticleBlock] .links-color a:link,
     [data-ko-block=sideArticleBlock] .links-color a:visited,
     [data-ko-block=sideArticleBlock] .links-color a:hover {
-      color:#000000;
+      color: #283042;
       -ko-color: @longTextStyle.linksColor;
-      text-decoration:underline;
+      text-decoration: underline;
     }
 
     [data-ko-block=socialBlock] .links-color a,
@@ -377,7 +378,7 @@
     [data-ko-block=doubleImageBlock] a:link,
     [data-ko-block=doubleImageBlock] a:visited,
     [data-ko-block=doubleImageBlock] a:hover {
-      color:#000000;
+      color: #283042;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
@@ -385,7 +386,7 @@
     [data-ko-block=tripleImageBlock] a:link,
     [data-ko-block=tripleImageBlock] a:visited,
     [data-ko-block=tripleImageBlock] a:hover {
-      color:#000000;
+      color: #283042;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
@@ -393,7 +394,7 @@
     [data-ko-block=imageBlock] a:link,
     [data-ko-block=imageBlock] a:visited,
     [data-ko-block=imageBlock] a:hover {
-      color:#000000;
+      color: #283042;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
@@ -821,13 +822,13 @@
   <default selector="block[theme='contentTheme'] long-text" line-height="normal" style="longTextStyle"></default>
   <default selector="share-btn" inner-addhpadding="4px" icon-size="24" icon-alt="{{name}}"></default>
   <default selector="block[theme='contentTheme'] btn" inner-hpadding="18px" style="buttonStyle"></default>
-  <default selector="block[theme='contentTheme'] btn, share-btn" inner-padding="6" bgcolor="#FFED00" radius="4"></default>
+  <default selector="block[theme='contentTheme'] btn, share-btn" inner-padding="6" bgcolor="#FFD940" radius="4"></default>
   <default selector="block[theme='contentTheme'] linked-img" style="longTextStyle"></default>
 
   <default selector="divider" color="#3f3f3f"></default>
   <default selector="text, non-editable-text, long-text, linked-img" face="Arial, Helvetica, sans-serif" color="#3f3f3f" size="13px"></default>
-  <default selector="title-text, linked-text" face="Arial, Helvetica, sans-serif" color="#000000" size="13px"></default>
-  <default selector="share-btn, btn" face="Arial, Helvetica, sans-serif" color="#000000" size="13px"></default>
+  <default selector="title-text, linked-text" face="Arial, Helvetica, sans-serif" color="#283042" size="13px"></default>
+  <default selector="share-btn, btn" face="Arial, Helvetica, sans-serif" color="#283042" size="13px"></default>
   <default selector="text, non-editable-text, title-text, long-text:not([fixed-align]), btn, linked-text" align="left"></default>
 
   <!-- immages on gallery blocks are shown full width (100%) on mobile -->
@@ -857,7 +858,7 @@
   </template-def>
 </head>
 <!--[if !(gte mso 16)]-->
-<body bgcolor="#3f3f3f" size=16px; text="#919191" alink="#000000" vlink="#000000" style="background-color: #3f3f3f; color: #919191;
+<body bgcolor="#3f3f3f" size=16px; text="#919191" alink="#283042" vlink="#283042" style="background-color: #3f3f3f; color: #919191;
   -ko-background-color: @_theme_.frameTheme.backgroundColor; -ko-attr-bgcolor: @_theme_.frameTheme.backgroundColor; -ko-color: @_theme_.frameTheme.longTextStyle.color;
   -ko-attr-text: @_theme_.frameTheme.longTextStyle.color; -ko-attr-alink: @_theme_.frameTheme.longTextStyle.linksColor;
   -ko-attr-vlink: @_theme_.frameTheme.longTextStyle.linksColor"><!--<![endif]--><center>
@@ -1086,7 +1087,7 @@
         <custom-row false if="bigSocialIconType eq 'colorsbrand'" align="center" class="links-color socialLinks mobile-textcenter">
           <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
           socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
-            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" color="#FFED00" src="img/icons/{{prefix}}-colorsbrand-96.png" alt="{{name}}"></social-icon>
+            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" color="#FFD940" src="img/icons/{{prefix}}-colorsbrand-96.png" alt="{{name}}"></social-icon>
           </repeater>
         </custom-row>
         <custom-row false if="bigSocialIconType eq 'coloured'" align="center" class="links-color socialLinks mobile-textcenter">
@@ -1156,13 +1157,13 @@
       <block-inner if="shareButtonType eq 'custom'" inner-padding="9" inner-class="vb-row">
         <columns autowidth="1">
           <repeater prefix="fb,tw,in,pi" default="if,if,false if,false if" name="Facebook,Twitter,LinkedIn,Pinterest" shareurl="http://www.facebook.com/sharer/sharer.php?u=,http://twitter.com/share?url=,http://www.linkedin.com/shareArticle?url=,http://pinterest.com/pin/find/?url=">
-            <column-contentfalse {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'brand'" spacing="9" align="center">
+            <column-content false {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'brand'" spacing="9" align="center">
               <share-btn href="{{shareurl}}%5Bpermlink_urlenc%5D" icon-src="img/icons/{{prefix}}-coloured-96.png" editable="{{prefix}}Text" custom-style="shareButtonStyle">Comparteix</btn>
             </column-content>
-            <column-contentfalse {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'white'" spacing="9" align="center">
+            <column-content false {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'white'" spacing="9" align="center">
               <share-btn href="{{shareurl}}%5Bpermlink_urlenc%5D" icon-src="img/icons/{{prefix}}-white-96.png" editable="{{prefix}}Text" custom-style="shareButtonStyle">Comparteix</btn>
             </column-content>
-            <column-contenttrue {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'black'" spacing="9" align="center">
+            <column-content true {{default}}="{{prefix}}Visible and shareButtonStyle.iconColorType eq 'black'" spacing="9" align="center">
               <share-btn href="{{shareurl}}%5Bpermlink_urlenc%5D" icon-src="img/icons/{{prefix}}-black-96.png" editable="{{prefix}}Text" custom-style="shareButtonStyle">Comparteix</btn>
             </column-content>
           </repeater>
@@ -1227,7 +1228,8 @@
   <block name="footerBlockLegal" label="Peu - Avís legal" theme="frameTheme">
     <block-inner inner-padding="0" inner-class="vb-row">
       <content spacing="9" width="552" class="legal-text" td-styles="padding: 0 9px" text-align="center">
-        <non-editable-text class="legal-text" color="#919191" size="11px">En compliment de la Llei 34/2002, d&#039;onze de juliol, de serveis de la societat de la informació i de comerç electrònic i del Reglament UE 679/2016 de protecció de dades, des de la FUNDACIÓ MIGRA STUDIUM t&#039;informem que disposem de la teva adreça de correu electrònic en base a que ens l&#039;has facilitada voluntàriament amb la finalitat de mantenir la nostra relació i poder-te enviar comunicacions sobre les activitats de la nostra entitat. <br>T&#039;informem del teu dret d&#039;accés, rectificació, supressió, portabilitat, limitació o oposició al tractament respecte a les teves dades, així com a retirar el consentiment donat en qualsevol moment. Si no desitges seguir rebent els nostres correus electrònics, només ens ho has d&#039;indicar enviant un correu electrònic a  <a href="mailto:dades@migrastudium.org">dades@migrastudium.org</a> o fent clic <a href='{action.optOutUrl}'> aquí</a>. Per a més informació pots consultar la nostra <a href="https://www.migrastudium.org/politica-de-privacitat/">política de privacitat</a>.<br><br>
+        <non-editable-text class="legal-text" color="#919191" size="11px">
+          En compliment de la Llei 34/2002, d&#039;onze de juliol, de serveis de la societat de la informació i de comerç electrònic i del Reglament UE 679/2016 de protecció de dades, des de la  FUNDACIÓ MIGRA STUDIUM  t&#039;informem que disposem de la teva adreça de correu electrònic en base a que ens l&#039;has facilitada voluntàriament amb la finalitat de mantenir la nostra relació i poder-te enviar comunicacions sobre les activitats de la nostra entitat. <br> T&#039;informem del teu dret d&#039;accés, rectificació, supressió, portabilitat, limitació o oposició al tractament respecte a les teves dades, així com a retirar el consentiment donat en qualsevol moment. Si no desitges seguir rebent els nostres correus electrònics, només ens ho has d&#039;indicar enviant un correu electrònic a  <a href="mailto:dades@migrastudium.org">dades@migrastudium.org</a>  o fent clic <a href='{action.optOutUrl}'> aquí</a> . Per a més informació pots consultar la nostra <a href="https://www.migrastudium.org/politica-de-privacitat/">política de privacitat</a>.<br><br>
         </non-editable-text>
       </content>
     </block-inner>
