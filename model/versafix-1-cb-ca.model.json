@@ -1,0 +1,179 @@
+{
+  "type": "template",
+  "customStyle": false,
+  "preheaderVisible": true,
+  "titleText": "[subject]",
+  "preheaderBlock": {
+    "type": "preheaderBlock",
+    "customStyle": false,
+    "id": "",
+    "backgroundColor": null,
+    "preheaderText": "",
+    "longTextStyle": {
+      "type": "longTextStyle",
+      "face": null,
+      "color": null,
+      "size": null,
+      "lineHeight": null,
+      "align": null,
+      "linksColor": null
+    },
+    "preheaderLinkOption": null
+  },
+  "socialBlock": {
+    "type": "socialBlock",
+    "customStyle": false,
+    "socialIconType": "rdw",
+    "fbVisible": true,
+    "fbUrl": "http://www.facebook.com/csantjaume",
+    "twVisible": true,
+    "twUrl": "http://twitter.com/CentreSantJaume",
+    "webVisible": true,
+    "webUrl": "https://www.fundaciocarlesblanch.org",
+    "waVisible": false,
+    "waUrl": "",
+    "tgVisible": false,
+    "tgUrl": "",
+    "inVisible": false,
+    "inUrl": "http://www.linkedin.com/company/",
+    "piVisible": false,
+    "piUrl": "http://pinterest.com/",
+    "flVisible": true,
+    "flUrl": "https://www.flickr.com/photos/centresantjaume",
+    "viVisible": false,
+    "viUrl": "https://vimeo.com/",
+    "instVisible": false,
+    "instUrl": "https://www.instagram.com/",
+    "youVisible": true,
+    "youUrl": "https://www.youtube.com/channel/FCBCSJ",
+    "longTextStyle": {
+      "type": "longTextStyle",
+      "face": null,
+      "color": null,
+      "size": null,
+      "lineHeight": null,
+      "align": null,
+      "linksColor": null
+    },
+    "longText": null,
+    "backgroundColor": null,
+    "longTextFooterStyle": {
+      "type": "longTextFooterStyle",
+      "color": null,
+      "linksColor": null
+    },
+    "id": ""
+  },
+  "footerBlock": {
+    "type": "footerBlock",
+    "customStyle": false,
+    "enviamentPublic": "true",
+    "longTextFooterStyle": {
+      "type": "longTextFooterStyle",
+      "color": null,
+      "linksColor": null
+    },
+    "id": "",
+    "backgroundColor": null
+  },
+  "footerBlockLegal": {
+    "type": "footerBlockLegal",
+    "customStyle": false,
+    "id": "",
+    "backgroundColor": null
+  },
+  "mainBlocks": {
+    "type": "blocks",
+    "blocks": []
+  },
+  "theme": {
+    "type": "theme",
+    "frameTheme": {
+      "type": "frameTheme",
+      "backgroundColor": "#3f3f3f",
+      "longTextFooterStyle": {
+        "type": "longTextFooterStyle",
+        "color": null,
+        "linksColor": "#ffffff"
+      },
+      "longTextStyle": {
+        "type": "longTextStyle",
+        "face": "Arial, Helvetica, sans-serif",
+        "color": "#919191",
+        "size": "13",
+        "lineHeight": null,
+        "align": "left",
+        "linksColor": "#a11d33"
+      }
+    },
+    "contentTheme": {
+      "type": "contentTheme",
+      "longTextStyle": {
+        "type": "longTextStyle",
+        "face": "Arial, Helvetica, sans-serif",
+        "color": "#3f3f3f",
+        "size": "13",
+        "lineHeight": "normal",
+        "align": "left",
+        "linksColor": "#a11d33"
+      },
+      "externalBackgroundColor": "#efefef",
+      "externalTextStyle": {
+        "type": "textStyle",
+        "face": "Arial, Helvetica, sans-serif",
+        "color": "#f3f3f3",
+        "size": "18",
+        "align": null
+      },
+      "backgroundColor": "#ffffff",
+      "titleTextStyle": {
+        "type": "textStyle",
+        "face": "Arial, Helvetica, sans-serif",
+        "color": "#3f3f3f",
+        "size": "18",
+        "align": "left"
+      },
+      "buttonStyle": {
+        "type": "buttonStyle",
+        "face": "Arial, Helvetica, sans-serif",
+        "color": "#ffffff",
+        "size": "13",
+        "align": "left",
+        "buttonColor": "#a11d33",
+        "radius": "4"
+      },
+      "bigTitleStyle": {
+        "type": "bigTitleStyle",
+        "face": "Arial, Helvetica, sans-serif",
+        "color": "#a11d33",
+        "size": "22",
+        "align": "center"
+      },
+      "hrStyle": {
+        "type": "hrStyle",
+        "color": "#3f3f3f",
+        "hrWidth": "100",
+        "hrHeight": "1"
+      },
+      "bigButtonStyle": {
+        "type": "buttonStyle",
+        "face": "Arial, Helvetica, sans-serif",
+        "color": "#ffffff",
+        "size": "22",
+        "align": "center",
+        "buttonColor": "#a11d33",
+        "radius": "4"
+      },
+      "shareButtonStyle": {
+        "type": "shareButtonStyle",
+        "face": "Arial, Helvetica, sans-serif",
+        "iconColorType": "white",
+        "color": "#ffffff",
+        "size": "13",
+        "align": null,
+        "buttonColor": "#a11d33",
+        "radius": "4"
+      }
+    }
+  }
+}

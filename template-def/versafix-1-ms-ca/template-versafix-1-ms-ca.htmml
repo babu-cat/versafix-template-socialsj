@@ -307,7 +307,7 @@
     [data-ko-block=tripleArticleBlock] .links-color a:link,
     [data-ko-block=tripleArticleBlock] .links-color a:visited,
     [data-ko-block=tripleArticleBlock] .links-color a:hover {
-      color: #283042;
+      color: #2F3244;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: underline;
     }
@@ -316,7 +316,7 @@
     [data-ko-block=doubleArticleBlock] .links-color a:link,
     [data-ko-block=doubleArticleBlock] .links-color a:visited,
     [data-ko-block=doubleArticleBlock] .links-color a:hover {
-      color: #283042;
+      color: #2F3244;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: underline;
     }
@@ -325,7 +325,7 @@
     [data-ko-block=singleArticleBlock] .links-color a:link,
     [data-ko-block=singleArticleBlock] .links-color a:visited,
     [data-ko-block=singleArticleBlock] .links-color a:hover {
-      color: #283042;
+      color: #2F3244;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: underline;
     }
@@ -334,7 +334,7 @@
     [data-ko-block=textBlock] .links-color a:link,
     [data-ko-block=textBlock] .links-color a:visited,
     [data-ko-block=textBlock] .links-color a:hover {
-      color: #283042;
+      color: #2F3244;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: underline;
     }
@@ -343,7 +343,7 @@
     [data-ko-block=sideArticleBlock] .links-color a:link,
     [data-ko-block=sideArticleBlock] .links-color a:visited,
     [data-ko-block=sideArticleBlock] .links-color a:hover {
-      color: #283042;
+      color: #2F3244;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: underline;
     }
@@ -378,7 +378,7 @@
     [data-ko-block=doubleImageBlock] a:link,
     [data-ko-block=doubleImageBlock] a:visited,
     [data-ko-block=doubleImageBlock] a:hover {
-      color: #283042;
+      color: #2F3244;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
@@ -386,7 +386,7 @@
     [data-ko-block=tripleImageBlock] a:link,
     [data-ko-block=tripleImageBlock] a:visited,
     [data-ko-block=tripleImageBlock] a:hover {
-      color: #283042;
+      color: #2F3244;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
@@ -394,7 +394,7 @@
     [data-ko-block=imageBlock] a:link,
     [data-ko-block=imageBlock] a:visited,
     [data-ko-block=imageBlock] a:hover {
-      color: #283042;
+      color: #2F3244;
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
@@ -822,13 +822,13 @@
   <default selector="block[theme='contentTheme'] long-text" line-height="normal" style="longTextStyle"></default>
   <default selector="share-btn" inner-addhpadding="4px" icon-size="24" icon-alt="{{name}}"></default>
   <default selector="block[theme='contentTheme'] btn" inner-hpadding="18px" style="buttonStyle"></default>
-  <default selector="block[theme='contentTheme'] btn, share-btn" inner-padding="6" bgcolor="#FFD940" radius="4"></default>
+  <default selector="block[theme='contentTheme'] btn, share-btn" inner-padding="6" bgcolor="#FFD942" radius="4"></default>
   <default selector="block[theme='contentTheme'] linked-img" style="longTextStyle"></default>
 
   <default selector="divider" color="#3f3f3f"></default>
   <default selector="text, non-editable-text, long-text, linked-img" face="Arial, Helvetica, sans-serif" color="#3f3f3f" size="13px"></default>
-  <default selector="title-text, linked-text" face="Arial, Helvetica, sans-serif" color="#283042" size="13px"></default>
-  <default selector="share-btn, btn" face="Arial, Helvetica, sans-serif" color="#283042" size="13px"></default>
+  <default selector="title-text, linked-text" face="Arial, Helvetica, sans-serif" color="#2F3244" size="13px"></default>
+  <default selector="share-btn, btn" face="Arial, Helvetica, sans-serif" color="#2F3244" size="13px"></default>
   <default selector="text, non-editable-text, title-text, long-text:not([fixed-align]), btn, linked-text" align="left"></default>
 
   <!-- immages on gallery blocks are shown full width (100%) on mobile -->
@@ -858,7 +858,7 @@
   </template-def>
 </head>
 <!--[if !(gte mso 16)]-->
-<body bgcolor="#3f3f3f" size=16px; text="#919191" alink="#283042" vlink="#283042" style="background-color: #3f3f3f; color: #919191;
+<body bgcolor="#3f3f3f" size=16px; text="#919191" alink="#2F3244" vlink="#2F3244" style="background-color: #3f3f3f; color: #919191;
   -ko-background-color: @_theme_.frameTheme.backgroundColor; -ko-attr-bgcolor: @_theme_.frameTheme.backgroundColor; -ko-color: @_theme_.frameTheme.longTextStyle.color;
   -ko-attr-text: @_theme_.frameTheme.longTextStyle.color; -ko-attr-alink: @_theme_.frameTheme.longTextStyle.linksColor;
   -ko-attr-vlink: @_theme_.frameTheme.longTextStyle.linksColor"><!--<![endif]--><center>
@@ -1087,7 +1087,7 @@
         <custom-row false if="bigSocialIconType eq 'colorsbrand'" align="center" class="links-color socialLinks mobile-textcenter">
           <repeater prefix="fb,tw,web,wa,tg,in,pi,fl,vi,inst,you" default="if,if,if,false if,false if,false if,false if,false if,false if,if,if" name="Facebook,Twitter,Web,Whatsapp,Telegram,Linkedin,Pinterest,Flickr,Vimeo,Instagram,Youtube"
           socialurl="http://www.facebook.com/migrastudium,http://twitter.com/MigraStudium,https://www.migrastudium.org,,,http://www.linkedin.com/company/,http://pinterest.com/,https://www.flickr.com/photos/,https://vimeo.com/,https://www.instagram.com/migrastudium,https://www.youtube.com/channel/UCi6lPYHOkKqRGr12eVUfIVA">
-            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" color="#FFD940" src="img/icons/{{prefix}}-colorsbrand-96.png" alt="{{name}}"></social-icon>
+            <social-icon {{default}}="{{prefix}}Visible" href="{{socialurl}}" href-prop="{{prefix}}Url" size="48" size-prop="bigSocialIconSize" color="#FFD942" src="img/icons/{{prefix}}-colorsbrand-96.png" alt="{{name}}"></social-icon>
           </repeater>
         </custom-row>
         <custom-row false if="bigSocialIconType eq 'coloured'" align="center" class="links-color socialLinks mobile-textcenter">
