@@ -7,6 +7,13 @@ var fse = require('fs-extra');
 
 var templates = [
 {
+	'htmml': './template-def/versafix-1-asi-ca/template-versafix-1-asi-ca.htmml',
+	'html': './dist/versafix-1-asi-ca/template-versafix-1-asi-ca.html',
+	'imgDir': './template-def/versafix-1-asi-ca/img/',
+	'destImgDir': './dist/versafix-1-asi-ca/img/',
+	'modelPrefix': './model/versafix-1-asi-ca'
+},
+{
 	'htmml': './template-def/versafix-1-sa-ca/template-versafix-1-sa-ca.htmml',
 	'html': './dist/versafix-1-sa-ca/template-versafix-1-sa-ca.html',
 	'imgDir': './template-def/versafix-1-sa-ca/img/',
