@@ -398,6 +398,7 @@
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
+    img[data-emoji] { display: inline }
   </style>
   <template-def>
 
@@ -803,7 +804,7 @@
 
   <default selector="block[theme='contentTheme'] block-inner:not([if='externalBackgroundVisible'])" inner-bgcolor="#ffffff" inner-bgcolor-prop="backgroundColor"></default>
 
-  <default selector="block[name='logoBlock'] block-inner[if='externalBackgroundVisible'] linked-img, block[name='brandLogoBlock'] block-inner[if='externalBackgroundVisible'] linked-img" color="#f3f3f3" size="18px" face="Arial, Helvetica, sans-serif" style="externalTextStyle"></default>
+  <default selector="block[name='logoBlock'] block-inner[if='externalBackgroundVisible'] linked-img, block[name='brandLogoBlock'] block-inner[if='externalBackgroundVisible'] linked-img" color="#f3f3f3" size="20px" face="Arial, Helvetica, sans-serif" style="externalTextStyle"></default>
 
   <default selector="columns:not([autowidth])" width="552"></default>
   <!-- force border-spacing to 0 for Sfr.fr/Orange.fr -->
@@ -818,17 +819,17 @@
   <default selector="block[theme='frameTheme'] text, block[theme='frameTheme'] long-text" color="#919191" style="longTextStyle"></default>
 
 
-  <default selector="block[theme='contentTheme'] text" size="18px" style="titleTextStyle"></default>
+  <default selector="block[theme='contentTheme'] text" size="20px" style="titleTextStyle"></default>
   <default selector="block[theme='contentTheme'] long-text" line-height="normal" style="longTextStyle"></default>
   <default selector="share-btn" inner-addhpadding="4px" icon-size="24" icon-alt="{{name}}"></default>
-  <default selector="block[theme='contentTheme'] btn" inner-hpadding="18px" style="buttonStyle"></default>
+  <default selector="block[theme='contentTheme'] btn" inner-hpadding="20px" style="buttonStyle"></default>
   <default selector="block[theme='contentTheme'] btn, share-btn" inner-padding="6" bgcolor="#1AA858" radius="4"></default>
   <default selector="block[theme='contentTheme'] linked-img" style="longTextStyle"></default>
 
   <default selector="divider" color="#3f3f3f"></default>
-  <default selector="text, non-editable-text, long-text, linked-img" face="Arial, Helvetica, sans-serif" color="#3f3f3f" size="13px"></default>
-  <default selector="title-text, linked-text" face="Arial, Helvetica, sans-serif" color="#1AA858" size="13px"></default>
-  <default selector="share-btn, btn" face="Arial, Helvetica, sans-serif" color="#ffffff" size="13px"></default>
+  <default selector="text, non-editable-text, long-text, linked-img" face="Arial, Helvetica, sans-serif" color="#3f3f3f" size="16px"></default>
+  <default selector="title-text, linked-text" face="Arial, Helvetica, sans-serif" color="#1AA858" size="16px"></default>
+  <default selector="share-btn, btn" face="Arial, Helvetica, sans-serif" color="#ffffff" size="16px"></default>
   <default selector="text, non-editable-text, title-text, long-text:not([fixed-align]), btn, linked-text" align="left"></default>
 
   <!-- immages on gallery blocks are shown full width (100%) on mobile -->
@@ -874,7 +875,7 @@
             <text false if="preheaderLinkOption eq 'visible'" content="preheaderText"></text>
           </column-content><!--
           --><column-content width="276" spacing="9" class="mobile-hide">
-            <non-editable-text align="right">Si no veus bé aquest correu fes clic <a href="[show_link]">aquí</a></non-editable-text>
+            <non-editable-text align="right" size="13px">Si no veus bé aquest correu fes clic <a style="color:#919191;" href="[show_link]">aquí</a></non-editable-text>
           </column-content><!--
         --></columns>
       </block-inner>
@@ -1184,10 +1185,10 @@
     <block-inner inner-padding="9" inner-class="vb-row">
       <columns><!--
         --><column-content width="276" spacing="9">
-          <non-editable-text align="left" color="#D1D1D1">
+          <non-editable-text align="left" color="#D1D1D1" size="13px">
             <strong>Arrels Sant Ignasi</strong><br>
             {domain.address}<br>
-            <a href="https://arrelssantignasi.cat/">www.arrelssantignasi.cat</a>
+            <a style="color:#FFFFFF" href="https://arrelssantignasi.cat/">www.arrelssantignasi.cat</a>
           </non-editable-text>
         </column-content><!--
         --><column-content width="276" spacing="9">
@@ -1217,10 +1218,10 @@
   <block name="footerBlock" label="Peu - Enllaços" theme="frameTheme">
     <block-inner inner-padding="0" inner-class="vb-row">
       <content spacing="9" width="552" class="links-color" td-styles="padding: 0 9px" text-align="center">
-        <non-editable-text align="center">
-          <span data-ko-display="enviamentPublic"><a href="[unsubscribe_link]">Cancel·lar subscripció</a> ·</span>
-          <a href="{action.optOutUrl}">Baixa</a> ·
-          <a href="https://arrelssantignasi.cat//avis-legal">Política de privacitat</a>
+        <non-editable-text align="center" size="13px">
+          <span data-ko-display="enviamentPublic"><a style="color:#FFFFFF" href="[unsubscribe_link]">Cancel·lar subscripció</a> ·</span>
+          <a style="color:#FFFFFF" href="{action.optOutUrl}">Baixa</a> ·
+          <a style="color:#FFFFFF" href="https://arrelssantignasi.cat//avis-legal">Política de privacitat</a>
         </non-editable-text>
       </content>
     </block-inner>
@@ -1229,7 +1230,7 @@
     <block-inner inner-padding="0" inner-class="vb-row">
       <content spacing="9" width="552" class="legal-text" td-styles="padding: 0 9px" text-align="center">
         <non-editable-text class="legal-text" color="#919191" size="11px">
-          En compliment de la Llei 34/2002, d&#039;onze de juliol, de serveis de la societat de la informació i de comerç electrònic i del Reglament UE 679/2016 de protecció de dades, des de la FUNDACIÓ ARRELS SANT IGNASI t&#039;informem que disposem de la teva adreça de correu electrònic en base a que ens l&#039;has facilitada voluntàriament amb la finalitat de mantenir la nostra relació i poder-te enviar comunicacions sobre les activitats de la nostra entitat. <br> T&#039;informem del teu dret d&#039;accés, rectificació, supressió, portabilitat, limitació o oposició al tractament respecte a les teves dades, així com a retirar el consentiment donat en qualsevol moment. Si no desitges seguir rebent els nostres correus electrònics, només ens ho has d&#039;indicar enviant un correu electrònic a <a href="mailto:"></a> o fent clic <a href='{action.optOutUrl}'>aquí</a> . Per a més informació pots consultar la nostra <a href="">política de privacitat</a>.<br><br>
+          En compliment de la Llei 34/2002, d&#039;onze de juliol, de serveis de la societat de la informació i de comerç electrònic i del Reglament UE 679/2016 de protecció de dades, des de la FUNDACIÓ ARRELS SANT IGNASI t&#039;informem que disposem de la teva adreça de correu electrònic en base a que ens l&#039;has facilitada voluntàriament amb la finalitat de mantenir la nostra relació i poder-te enviar comunicacions sobre les activitats de la nostra entitat. <br> T&#039;informem del teu dret d&#039;accés, rectificació, supressió, portabilitat, limitació o oposició al tractament respecte a les teves dades, així com a retirar el consentiment donat en qualsevol moment. Si no desitges seguir rebent els nostres correus electrònics, només ens ho has d&#039;indicar enviant un correu electrònic a <a style="color:#919191" href="mailto:dades@arrelssantignasi.org">dades@arrelssantignasi.org</a> o fent clic <a style="color:#919191" href='{action.optOutUrl}'>aquí</a>. Per a més informació pots consultar la nostra <a style="color:#919191" href="https://arrelssantignasi.cat/politica-de-privacitat">política de privacitat</a>.<br><br>
         </non-editable-text>
       </content>
     </block-inner>

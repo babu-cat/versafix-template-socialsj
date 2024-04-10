@@ -398,6 +398,7 @@
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
+    img[data-emoji] { display: inline }
   </style>
   <template-def>
 
@@ -803,7 +804,7 @@
 
   <default selector="block[theme='contentTheme'] block-inner:not([if='externalBackgroundVisible'])" inner-bgcolor="#ffffff" inner-bgcolor-prop="backgroundColor"></default>
 
-  <default selector="block[name='logoBlock'] block-inner[if='externalBackgroundVisible'] linked-img, block[name='brandLogoBlock'] block-inner[if='externalBackgroundVisible'] linked-img" color="#f3f3f3" size="18px" face="Arial, Helvetica, sans-serif" style="externalTextStyle"></default>
+  <default selector="block[name='logoBlock'] block-inner[if='externalBackgroundVisible'] linked-img, block[name='brandLogoBlock'] block-inner[if='externalBackgroundVisible'] linked-img" color="#f3f3f3" size="20px" face="Arial, Helvetica, sans-serif" style="externalTextStyle"></default>
 
   <default selector="columns:not([autowidth])" width="552"></default>
   <!-- force border-spacing to 0 for Sfr.fr/Orange.fr -->
@@ -818,17 +819,17 @@
   <default selector="block[theme='frameTheme'] text, block[theme='frameTheme'] long-text" color="#919191" style="longTextStyle"></default>
 
 
-  <default selector="block[theme='contentTheme'] text" size="18px" style="titleTextStyle"></default>
+  <default selector="block[theme='contentTheme'] text" size="20px" style="titleTextStyle"></default>
   <default selector="block[theme='contentTheme'] long-text" line-height="normal" style="longTextStyle"></default>
   <default selector="share-btn" inner-addhpadding="4px" icon-size="24" icon-alt="{{name}}"></default>
-  <default selector="block[theme='contentTheme'] btn" inner-hpadding="18px" style="buttonStyle"></default>
+  <default selector="block[theme='contentTheme'] btn" inner-hpadding="20px" style="buttonStyle"></default>
   <default selector="block[theme='contentTheme'] btn, share-btn" inner-padding="6" bgcolor="#ec7334" radius="4"></default>
   <default selector="block[theme='contentTheme'] linked-img" style="longTextStyle"></default>
 
   <default selector="divider" color="#3f3f3f"></default>
-  <default selector="text, non-editable-text, long-text, linked-img" face="Arial, Helvetica, sans-serif" color="#3f3f3f" size="13px"></default>
-  <default selector="title-text, linked-text" face="Arial, Helvetica, sans-serif" color="#ec7334" size="13px"></default>
-  <default selector="share-btn, btn" face="Arial, Helvetica, sans-serif" color="#ffffff" size="13px"></default>
+  <default selector="text, non-editable-text, long-text, linked-img" face="Arial, Helvetica, sans-serif" color="#3f3f3f" size="16px"></default>
+  <default selector="title-text, linked-text" face="Arial, Helvetica, sans-serif" color="#ec7334" size="16px"></default>
+  <default selector="share-btn, btn" face="Arial, Helvetica, sans-serif" color="#ffffff" size="16px"></default>
   <default selector="text, non-editable-text, title-text, long-text:not([fixed-align]), btn, linked-text" align="left"></default>
 
   <!-- immages on gallery blocks are shown full width (100%) on mobile -->
@@ -874,7 +875,7 @@
             <text false if="preheaderLinkOption eq 'visible'" content="preheaderText"></text>
           </column-content><!--
           --><column-content width="276" spacing="9" class="mobile-hide">
-            <non-editable-text align="right">Si no ves bien este correo haz clic <a href="[show_link]">aquí</a></non-editable-text>
+            <non-editable-text align="right" size="13px">Si no ves bien este correo haz clic <a style="color:#919191;" href="[show_link]">aquí</a></non-editable-text>
           </column-content><!--
         --></columns>
       </block-inner>
@@ -1184,10 +1185,10 @@
     <block-inner inner-padding="9" inner-class="vb-row">
       <columns><!--
         --><column-content width="276" spacing="9">
-          <non-editable-text align="left" color="#D1D1D1">
+          <non-editable-text align="left" color="#D1D1D1" size="13px">
             <strong>Fundació Salut Alta</strong><br>
             {domain.address}<br>
-            <a href="https://www.fundaciosalutalta.org">www.fundaciosalutalta.org</a>
+            <a style="color:#FFFFFF" href="https://www.fundaciosalutalta.org">www.fundaciosalutalta.org</a>
           </non-editable-text>
         </column-content><!--
         --><column-content width="276" spacing="9">
@@ -1217,10 +1218,10 @@
   <block name="footerBlock" label="Peu - Enllaços" theme="frameTheme">
     <block-inner inner-padding="0" inner-class="vb-row">
       <content spacing="9" width="552" class="links-color" td-styles="padding: 0 9px" text-align="center">
-        <non-editable-text align="center">
-          <span data-ko-display="enviamentPublic"><a href="[unsubscribe_link]">Cancelar suscripción</a> ·</span>
-          <a href="{action.optOutUrl}">Baja</a> ·
-          <a href="https://www.fundaciosalutalta.org/es/aviso-legal">Política de privacidad</a>
+        <non-editable-text align="center" size="13px">
+          <span data-ko-display="enviamentPublic"><a style="color:#FFFFFF" href="[unsubscribe_link]">Cancelar suscripción</a> ·</span>
+          <a style="color:#FFFFFF" href="{action.optOutUrl}">Baja</a> ·
+          <a style="color:#FFFFFF" href="https://www.fundaciosalutalta.org/es/aviso-legal">Política de privacidad</a>
         </non-editable-text>
       </content>
     </block-inner>
@@ -1229,7 +1230,7 @@
     <block-inner inner-padding="0" inner-class="vb-row">
       <content spacing="9" width="552" class="legal-text" td-styles="padding: 0 9px" text-align="center">
         <non-editable-text class="legal-text" color="#919191" size="11px">
-          En cumplimiento de la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico y del Reglamento UE 679/2016 de protección de datos, desde la FUNDACIÓ SALUT ALTA te informamos de que disponemos de tu dirección de correo electrónico en base a que nos la has facilitado voluntariamente con la finalidad de mantener nuestra relación y poderte enviar comunicaciones sobre las actividades de nuestra entidad.<br>Te informamos de tu derecho de acceso, rectificación, supresión, portabilidad, limitación u oposición al tratamiento respecto a tus datos, así como a retirar el consentimiento prestado en cualquier momento. Si no deseas seguir recibiendo nuestros correos electrónicos, solo tienes que indicárnoslo enviando un correo electrónico a <a href="mailto:datos@fundaciolasalutalta.org">datos@fundaciolasalutalta.org</a> o haciendo clic <a href='{action.optOutUrl}'> aquí</a>. Para más información puedes consultar nuestra <a href="https://www.fundaciosalutalta.org/es/politica-de-privacidad/">política de privacidad</a>.<br><br>
+          En cumplimiento de la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico y del Reglamento UE 679/2016 de protección de datos, desde la FUNDACIÓ SALUT ALTA te informamos de que disponemos de tu dirección de correo electrónico en base a que nos la has facilitado voluntariamente con la finalidad de mantener nuestra relación y poderte enviar comunicaciones sobre las actividades de nuestra entidad. <br> Te informamos de tu derecho de acceso, rectificación, supresión, portabilidad, limitación u oposición al tratamiento respecto a tus datos, así como a retirar el consentimiento prestado en cualquier momento. Si no deseas seguir recibiendo nuestros correos electrónicos, solo tienes que indicárnoslo enviando un correo electrónico a <a style="color:#919191" href="mailto:datos@fundaciolasalutalta.org">datos@fundaciolasalutalta.org</a> o haciendo clic  <a style="color:#919191" href='{action.optOutUrl}'>aquí</a>. Para más información puedes consultar nuestra <a style="color:#919191" href="https://www.fundaciosalutalta.org/es/politica-de-privacidad/">política de privacidad</a>.<br><br>
         </non-editable-text>
       </content>
     </block-inner>
