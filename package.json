@@ -1,6 +1,6 @@
 {
   "name": "versafix-template",
-  "version": "1.1.19",
+  "version": "1.3.8",
   "description": "Versafix-1 Master Templates for Mosaico",
   "main": "./src/index.js",
   "repository": {
@@ -8,20 +8,49 @@
     "url": "git://github.com/voidlabs/versafix-template.git"
   },
   "devDependencies": {
-    "async": "^2.6.4",
-    "cheerio": "^1.0.0-rc.3",
-    "fs-extra": "^7.0.1",
-    "htmml": "^1.0.1",
-    "mockery": "^2.0.0",
-    "mosaico": "github:voidlabs/mosaico#6225f4d",
-    "phantomjs-prebuilt": "^2.1.16"
+    "async": "^3.2.5",
+    "cheerio": "1.0.0-rc.12",
+    "entities": "^4.5.0",
+    "fs-extra": "^11.1.1",
+    "htmml": "1.0.4",
+    "mockery": "^2.1.0",
+    "mosaico": "^0.18.10",
+    "phantomjs-prebuilt": "^2.1.16",
+    "release-it": "^17.0.0",
+    "replace-in-file": "^7.0.2",
+    "del-cli": "^5.1.0",
+    "tmp": "^0.2.1"
   },
   "author": "Stefano Bagnara",
   "license": "MIT",
   "scripts": {
     "build": "node src/index.js",
     "build-cj": "node src/index-cj.js",
-    "clean": "node ./node_modules/rimraf/bin.js -- 'dist/template/*' 'dist/template.it/*'"
+    "translate": "node src/translate.js",
+    "clean": "del-cli dist/template/** dist/template.it/**",
+    "test": "node src/test.js",
+    "release": "release-it"
   },
-  "engine": "node >= 6.0.0"
+  "engine": "node >= 6.0.0",
+  "release-it": {
+    "git": {
+      "addUntrackedFiles": true
+    },
+    "github": {
+      "release": true,
+      "releaseName": "v${version}"
+    },
+    "hooks": {
+      "before:init": [
+        "npm run translate test",
+        "npm run build test"
+      ],
+      "after:bump": [
+        "npm run clean",
+        "npm run translate",
+        "npm run build"
+      ],
+      "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+    }
+  }
 }
