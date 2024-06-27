@@ -398,6 +398,7 @@
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
+    img[data-emoji] { display: inline }
   </style>
   <template-def>
 

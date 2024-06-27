@@ -398,6 +398,7 @@
       -ko-color: @longTextStyle.linksColor;
       text-decoration: none;
     }
+    img[data-emoji] { display: inline }
   </style>
   <template-def>
 
@@ -803,7 +804,7 @@
 
   <default selector="block[theme='contentTheme'] block-inner:not([if='externalBackgroundVisible'])" inner-bgcolor="#ffffff" inner-bgcolor-prop="backgroundColor"></default>
 
-  <default selector="block[name='logoBlock'] block-inner[if='externalBackgroundVisible'] linked-img, block[name='brandLogoBlock'] block-inner[if='externalBackgroundVisible'] linked-img" color="#f3f3f3" size="18px" face="Arial, Helvetica, sans-serif" style="externalTextStyle"></default>
+  <default selector="block[name='logoBlock'] block-inner[if='externalBackgroundVisible'] linked-img, block[name='brandLogoBlock'] block-inner[if='externalBackgroundVisible'] linked-img" color="#f3f3f3" size="" face="Arial, Helvetica, sans-serif" style="externalTextStyle"></default>
 
   <default selector="columns:not([autowidth])" width="552"></default>
   <!-- force border-spacing to 0 for Sfr.fr/Orange.fr -->
@@ -818,17 +819,17 @@
   <default selector="block[theme='frameTheme'] text, block[theme='frameTheme'] long-text" color="#919191" style="longTextStyle"></default>
 
 
-  <default selector="block[theme='contentTheme'] text" size="18px" style="titleTextStyle"></default>
+  <default selector="block[theme='contentTheme'] text" size="" style="titleTextStyle"></default>
   <default selector="block[theme='contentTheme'] long-text" line-height="normal" style="longTextStyle"></default>
   <default selector="share-btn" inner-addhpadding="4px" icon-size="24" icon-alt="{{name}}"></default>
-  <default selector="block[theme='contentTheme'] btn" inner-hpadding="18px" style="buttonStyle"></default>
+  <default selector="block[theme='contentTheme'] btn" inner-hpadding="" style="buttonStyle"></default>
   <default selector="block[theme='contentTheme'] btn, share-btn" inner-padding="6" bgcolor="#d9251d" radius="4"></default>
   <default selector="block[theme='contentTheme'] linked-img" style="longTextStyle"></default>
 
   <default selector="divider" color="#3f3f3f"></default>
-  <default selector="text, non-editable-text, long-text, linked-img" face="Arial, Helvetica, sans-serif" color="#3f3f3f" size="13px"></default>
-  <default selector="title-text, linked-text" face="Arial, Helvetica, sans-serif" color="" size="13px"></default>
-  <default selector="share-btn, btn" face="Arial, Helvetica, sans-serif" color="" size="13px"></default>
+  <default selector="text, non-editable-text, long-text, linked-img" face="Arial, Helvetica, sans-serif" color="#3f3f3f" size=""></default>
+  <default selector="title-text, linked-text" face="Arial, Helvetica, sans-serif" color="" size=""></default>
+  <default selector="share-btn, btn" face="Arial, Helvetica, sans-serif" color="" size=""></default>
   <default selector="text, non-editable-text, title-text, long-text:not([fixed-align]), btn, linked-text" align="left"></default>
 
   <!-- immages on gallery blocks are shown full width (100%) on mobile -->
@@ -874,7 +875,7 @@
             <text false if="preheaderLinkOption eq 'visible'" content="preheaderText"></text>
           </column-content><!--
           --><column-content width="276" spacing="9" class="mobile-hide">
-            <non-editable-text align="right"> <a href="[show_link]"></a></non-editable-text>
+            <non-editable-text align="right" size=""> <a style="color:#919191;" href="[show_link]"></a></non-editable-text>
           </column-content><!--
         --></columns>
       </block-inner>
@@ -1184,10 +1185,10 @@
     <block-inner inner-padding="9" inner-class="vb-row">
       <columns><!--
         --><column-content width="276" spacing="9">
-          <non-editable-text align="left" color="#D1D1D1">
+          <non-editable-text align="left" color="#D1D1D1" size="">
             <strong></strong><br>
             {domain.address}<br>
-            <a href=""></a>
+            <a style="color:#FFFFFF" href=""></a>
           </non-editable-text>
         </column-content><!--
         --><column-content width="276" spacing="9">
@@ -1217,10 +1218,10 @@
   <block name="footerBlock" label="Peu - Enllaços" theme="frameTheme">
     <block-inner inner-padding="0" inner-class="vb-row">
       <content spacing="9" width="552" class="links-color" td-styles="padding: 0 9px" text-align="center">
-        <non-editable-text align="center">
-          <span data-ko-display="enviamentPublic"><a href="[unsubscribe_link]"></a> ·</span>
-          <a href="{action.optOutUrl}"></a> ·
-          <a href="/"></a>
+        <non-editable-text align="center" size="">
+          <span data-ko-display="enviamentPublic"><a style="color:#FFFFFF" href="[unsubscribe_link]"></a> ·</span>
+          <a style="color:#FFFFFF" href="{action.optOutUrl}"></a> ·
+          <a style="color:#FFFFFF" href="/"></a>
         </non-editable-text>
       </content>
     </block-inner>
@@ -1229,7 +1230,7 @@
     <block-inner inner-padding="0" inner-class="vb-row">
       <content spacing="9" width="552" class="legal-text" td-styles="padding: 0 9px" text-align="center">
         <non-editable-text class="legal-text" color="#919191" size="11px">
-          <br><a href="mailto:"></a><a href='{action.optOutUrl}'></a> <a href=""></a>.<br><br>
+             <br>  <a style="color:#919191" href="mailto:"></a>  <a style="color:#919191" href='{action.optOutUrl}'></a> <a style="color:#919191" href=""></a>.<br><br>
         </non-editable-text>
       </content>
     </block-inner>
