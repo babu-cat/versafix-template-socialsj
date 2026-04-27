@@ -20,7 +20,7 @@ var makeThumbs = function (templateFile, outputFolder, renderWidth, outputWidth)
 		console.log("DONE", result);
 		return true;
 	} catch (e) {
-		console.log("FAILED to run command: " + e, "Command line: ", cmd);
+		console.log("FAILED to run command: " + e, "Arguments: ", args.join(' '));
 		return false;
 	}
 

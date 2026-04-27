@@ -24,7 +24,7 @@
   "author": "Stefano Bagnara",
   "license": "MIT",
   "scripts": {
-    "build": "node src/index.js",
+    "build": "OPENSSL_CONF=/dev/null node src/index.js",
     "build-cj": "node src/index-cj.js",
     "translate": "node src/translate.js",
     "clean": "del-cli dist/template/** dist/template.it/**",

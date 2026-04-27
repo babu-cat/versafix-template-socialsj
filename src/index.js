@@ -1,14 +1,15 @@
+
 "use strict";
 
 const htmml2html = require('htmml');
 const makeThumbs = require('./makeThumbs');
 const checkTemplateDefs = require('./checkTemplateDefs');
 const fse = require('fs-extra');
-const replace = require('replace-in-file');
-const pkg = require('../package.json');
+const replaceInFile = require('replace-in-file');
 const tmp = require('tmp');
 const myArgs = process.argv.slice(2);
 const test = myArgs.length > 0 && myArgs[0] == 'test';
+const pkg = require('../package.json');
 
 var templates = [
 {
@@ -66,11 +67,11 @@ var ok = true;
 for (var i = 0; i < templates.length; i++) {
 	var htmlFile = test ? tmp.fileSync().name : templates[i].html;
 	htmml2html(templates[i].htmml, htmlFile);
-    replace.sync({
-    	files: htmlFile,
-    	from: /__VERSION__/g,
-    	to: pkg.version,
-    });
+	replaceInFile.replaceInFileSync({
+		files: htmlFile,
+		from: /__VERSION__/g,
+		to: pkg.version,
+	});
 	if (!test) fse.copySync(templates[i].tdDir+'img/', templates[i].destDir+'img/');
 	if (!test) fse.copySync(templates[i].tdDir+'edres/', templates[i].destDir+'edres/');
 	ok = checkTemplateDefs(htmlFile, templates[i].modelPrefix, false) && ok;
